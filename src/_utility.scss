@@ -1,0 +1,26 @@
+.flex-spBt {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.mg-tb-2 {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+.mg-rl-5 {
+  margin-left: 5rem;
+  margin-right: 5rem;
+}
+.font-xl {
+  font-size: 2rem;
+}
+.font-lg {
+  font-size: 1.5rem;
+}
+.color-dark {
+  color: $green;
+}
+
+.color-light {
+  color: $brown;
+}

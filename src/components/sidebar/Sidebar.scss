@@ -1,8 +1,6 @@
 @import "../../variables";
 .sidebar {
-  //   border: 1px solid red;
-  //   width: 26%;
-
+  width: 400px;
   .sidebar-list {
     li {
       margin-bottom: 0.5rem;
@@ -16,11 +14,10 @@
       &::before {
         transition: all 1s cubic-bezier(0.68, -0.55, 0.265, 1.55);
         content: "";
-        width: 10%;
         height: 100%;
         position: absolute;
         top: 0;
-        left: 0;
+        left: 3%;
         opacity: 0.2;
       }
 
@@ -33,12 +30,12 @@
       &::before {
         color: $green;
         border-radius: 10px;
-        width: 4.5%;
+        width: 40px;
         background: $bg-secondary;
       }
       &:hover {
         &::before {
-          width: 14%;
+          width: 130px;
         }
       }
     }

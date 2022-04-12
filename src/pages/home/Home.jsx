@@ -1,11 +1,11 @@
 import React from "react";
-import { Sidebar } from "../../components/sidebar/Sidebar";
+import { Search } from "../../components/search/Search";
 
 const Home = () => {
   return (
-    <>
-      <Sidebar />
-    </>
+    <div className="w100">
+      <Search />
+    </div>
   );
 };
 

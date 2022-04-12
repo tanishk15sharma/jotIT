@@ -1,17 +1,21 @@
-import "./App.css";
+import "./App.scss";
 import { Routes, Route } from "react-router-dom";
 import { Archive, Home, Label, Trash } from "./pages";
 import { Nav } from "./components/nav/Nav";
+import { Sidebar } from "./components/sidebar/Sidebar";
 function App() {
   return (
     <div className="mg-tb-2 mg-rl-5">
       <Nav />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/label" element={<Label />} />
-        <Route path="/archive" element={<Archive />} />
-        <Route path="/trash" element={<Trash />} />
-      </Routes>
+      <div className="flex-spBt ">
+        <Sidebar />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/label" element={<Label />} />
+          <Route path="/archive" element={<Archive />} />
+          <Route path="/trash" element={<Trash />} />
+        </Routes>
+      </div>
     </div>
   );
 }

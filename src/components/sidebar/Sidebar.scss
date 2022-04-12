@@ -1,0 +1,24 @@
+.sidebar {
+  border: 1px solid red;
+  //   width: 26%;
+
+  .sidebar-list {
+    li {
+      border: 1px solid blue;
+
+      margin-bottom: 0.5rem;
+      cursor: pointer;
+      transition: all 0.4s;
+      display: flex;
+      justify-content: baseline;
+      align-items: center;
+      padding: 0.4rem 0rem;
+
+      span {
+        color: gray;
+        margin: 0 1rem;
+        cursor: pointer;
+      }
+    }
+  }
+}

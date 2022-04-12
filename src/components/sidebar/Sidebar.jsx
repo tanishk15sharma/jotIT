@@ -7,32 +7,32 @@ const Sidebar = () => {
       <ul className="sidebar-list">
         <Link to="/">
           <li>
-            <span className="material-icons icon"> home </span>
+            <span className="material-icons side-icon"> home </span>
             HOME
           </li>
         </Link>
         <Link to="/label">
           <li>
-            <span className="material-icons icon">label </span>
+            <span className="material-icons side-icon">label </span>
             LABELS
           </li>
         </Link>
         <Link to="/archive">
           <li>
-            <span className="material-icons icon"> archive </span>
+            <span className="material-icons side-icon"> archive </span>
             ARCHIVE
           </li>
         </Link>
         <Link to="trash">
           <li>
-            <span className="material-icons icon"> delete </span>
+            <span className="material-icons side-icon"> delete </span>
             TRASH
           </li>
         </Link>
 
         <Link to="/">
           <li>
-            <span className="material-icons icon"> account_circle </span>
+            <span className="material-icons side-icon"> account_circle </span>
             PROFILE
           </li>
         </Link>

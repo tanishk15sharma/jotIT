@@ -24,7 +24,7 @@
         opacity: 0.2;
       }
 
-      span {
+      .side-icon {
         margin: 0 1rem;
         color: $green;
         mix-blend-mode: difference;
@@ -55,6 +55,5 @@
   font-weight: bolder;
 }
 .create-btn:hover {
-  color: $green;
-  background-color: $white;
+  opacity: 0.8;
 }

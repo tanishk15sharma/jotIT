@@ -36,6 +36,8 @@ const Sidebar = () => {
             PROFILE
           </li>
         </Link>
+
+        <button className="create-btn">CREATE NEW NOTE</button>
       </ul>
     </aside>
   );

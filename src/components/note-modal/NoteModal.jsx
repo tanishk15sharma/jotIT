@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import "./NoteModal.scss";
-const NoteModal = () => {
+const NoteModal = ({ toggleModal }) => {
   const [noteTitle, setNoteTitle] = useState("");
   const [noteBody, setNoteBody] = useState("");
   return (
-    <div className="fixed-container">
-      <div className="note-modal">
+    <div className="fixed-container" onClick={(e) => toggleModal(false)}>
+      <div className="note-modal" onClick={(e) => e.stopPropagation()}>
         <div className="mg-1 flex-spBt-center">
           <input
             placeholder="title"

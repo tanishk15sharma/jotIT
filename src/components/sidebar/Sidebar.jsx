@@ -46,7 +46,7 @@ const Sidebar = () => {
         >
           CREATE NEW NOTE
         </button>
-        {toggleModal ? <NoteModal /> : null}
+        {toggleModal ? <NoteModal toggleModal={setToggleModal} /> : null}
       </ul>
     </aside>
   );

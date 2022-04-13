@@ -4,14 +4,15 @@ const Auth = () => {
   return (
     <div className="fixed-container">
       <div className="flex-cl">
-        <div className="txt-center">
-          <span className="border-btn font-lg pd-right-1 ">LOGIN</span>
-          <span className="font-lg pd-left-1">SIGNUP</span>
+        <div className="border-bottom">
+          <button className=" w50 border-rg font-lg pd ">LOGIN</button>
+          <button className=" w50 font-lg border-reset pd ">SIGNUP</button>
         </div>
-        <input type="text" placeholder="EMAIL" />
-        <input type="text" placeholder="PASSWORD" />
-        <button>LOGIN</button>
+        <input type="text" placeholder="EMAIL" className="pd mg-rl-2" />
+        <input type="text" placeholder="PASSWORD" className="pd mg-rl-2" />
+        <button className="pd border-none">LOGIN</button>
       </div>
+
       {/* <div>SINGUP</div> */}
     </div>
   );

@@ -7,6 +7,12 @@
   display: flex;
   justify-content: space-between;
 }
+.pd-1 {
+  padding: 1rem;
+}
+.pd {
+  padding: 0.5rem;
+}
 .pd-top-1 {
   padding-top: 1rem;
 }
@@ -28,6 +34,12 @@
   margin-top: 2rem;
   margin-bottom: 2rem;
 }
+
+.mg-rl-2 {
+  margin-left: 2rem;
+  margin-right: 2rem;
+}
+
 .mg-rl-5 {
   margin-left: 5rem;
   margin-right: 5rem;
@@ -72,4 +84,19 @@
 }
 .reset-input:focus {
   outline: none;
+}
+
+.border-bottom {
+  border-bottom: 1px solid black;
+}
+.border-rg {
+  border: none;
+  border-bottom: 2px solid $green;
+}
+.border-reset {
+  border: none;
+  background-color: transparent;
+}
+.border-none {
+  border: none;
 }

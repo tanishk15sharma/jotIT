@@ -1,13 +1,9 @@
+@import "../../variables";
 .flex-cl {
-  border: 1px solid red;
   display: flex;
   flex-direction: column;
-}
-.txt-center {
-  //   text-align: center;
-  padding: 0.5rem 1rem;
-  //   border: 1px solid blue;
-}
-.border-btn {
-  border-right: 1px solid black;
+  gap: 1rem;
+  background-color: $white;
+
+  //   padding: 1rem;
 }

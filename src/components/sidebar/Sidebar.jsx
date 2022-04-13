@@ -1,7 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Sidebar.scss";
 import { Link } from "react-router-dom";
+import { NoteModal } from "../note-modal/NoteModal";
 const Sidebar = () => {
+  const [toggleModal, setToggleModal] = useState(false);
+  console.log(toggleModal);
   return (
     <aside className="sidebar">
       <ul className="sidebar-list">
@@ -37,7 +40,13 @@ const Sidebar = () => {
           </li>
         </Link>
 
-        <button className="create-btn">CREATE NEW NOTE</button>
+        <button
+          className="create-btn"
+          onClick={() => setToggleModal((val) => !val)}
+        >
+          CREATE NEW NOTE
+        </button>
+        {toggleModal ? <NoteModal /> : null}
       </ul>
     </aside>
   );

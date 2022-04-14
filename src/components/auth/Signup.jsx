@@ -1,4 +1,6 @@
+import axios from "axios";
 import React, { useState } from "react";
+import { validSignUp } from "../../utilities/auth-utils";
 
 const Signup = ({ toggleAuth }) => {
   const [signup, setSignup] = useState({
@@ -19,8 +21,30 @@ const Signup = ({ toggleAuth }) => {
     setSignupErrors((err) => ({ ...err, [e.target.name]: "" }));
   };
 
+  const handleSignUpSubmit = (e) => {
+    e.preventDefault();
+    const { isValid, errors } = validSignUp(signup, signupErrors);
+
+    if (!isValid) {
+      setSignupErrors(errors);
+      return;
+    }
+
+    postSignUpData(signup);
+  };
+
+  const postSignUpData = async () => {
+    try {
+      const res = await axios.post("/api/auth/signup", signup);
+      console.log(res);
+    } catch (err) {
+      console.log(err.response);
+    }
+  };
+
+  console.log(signupErrors);
   return (
-    <form className="flex-cl">
+    <form className="flex-cl" onSubmit={handleSignUpSubmit}>
       <div className="border-bottom">
         <button
           className=" w50 border-reset font-lg pd"

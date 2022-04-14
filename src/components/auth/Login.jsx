@@ -32,7 +32,6 @@ const Login = ({ toggleAuth }) => {
   };
 
   const postLoginData = async (email, password) => {
-    console.log(email, password);
     try {
       const res = await axios.post("/api/auth/login", { email, password });
       console.log(res);
@@ -43,7 +42,7 @@ const Login = ({ toggleAuth }) => {
   const testLogin = () => {
     setLogin({ email: "adarshbalika@gmail.com", password: "adarshBalika123" });
   };
-  console.log(loginErrors);
+
   return (
     <form className="flex-cl h30" onSubmit={handleLoginSubmit}>
       <div className="border-bottom">

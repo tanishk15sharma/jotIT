@@ -1,8 +1,26 @@
-import React from "react";
+import React, { useState } from "react";
 
 const Signup = ({ toggleAuth }) => {
+  const [signup, setSignup] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+    newPassword: "",
+  });
+  const [signupErrors, setSignupErrors] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+    newPassword: "",
+  });
+
+  const signUpInputHandler = (e) => {
+    setSignup((data) => ({ ...data, [e.target.name]: e.target.value }));
+    setSignupErrors((err) => ({ ...err, [e.target.name]: "" }));
+  };
+
   return (
-    <div className="flex-cl">
+    <form className="flex-cl">
       <div className="border-bottom">
         <button
           className=" w50 border-reset font-lg pd"
@@ -16,18 +34,39 @@ const Signup = ({ toggleAuth }) => {
         type="text"
         placeholder="FIRST NAME"
         className="pd mg-rl-2 mg-top-1"
+        value={signup.firstName}
+        name="firstName"
+        onChange={(e) => signUpInputHandler(e)}
       />
-      <input type="text" placeholder="LAST NAME" className="pd mg-rl-2" />
-      <input type="text" placeholder="EMAIL" className="pd mg-rl-2" />
       <input
         type="text"
-        placeholder="PASSWORD"
+        placeholder="LAST NAME"
+        className="pd mg-rl-2"
+        value={signup.lastName}
+        name="lastName"
+        onChange={(e) => signUpInputHandler(e)}
+      />
+      <input
+        type="text"
+        placeholder="EMAIL"
+        className="pd mg-rl-2"
+        value={signup.email}
+        name="email"
+        onChange={(e) => signUpInputHandler(e)}
+      />
+
+      <input
+        type="text"
+        placeholder="CREATE PASSWORD"
         className="pd mg-rl-2 
       mg-bottom-1
       "
+        value={signup.password}
+        name="newPassword"
+        onChange={(e) => signUpInputHandler(e)}
       />
       <button className="pd border-none">SIGN IN</button>
-    </div>
+    </form>
   );
 };
 

@@ -1,13 +1,15 @@
+import { PASSWORD_UPPERCASE_REGEX, EMAIL_REGEX } from "./helper-utils";
+
 const validLogin = ({ email, password }, loginErrors) => {
   if (!email)
     return {
       isValid: false,
-      errors: { ...loginErrors, email: "Email is required" },
+      errors: { ...loginErrors, email: "Email is required." },
     };
   if (!password)
     return {
       isValid: false,
-      errors: { ...loginErrors, password: "Password is required" },
+      errors: { ...loginErrors, password: "Password is required." },
     };
 
   return {
@@ -42,6 +44,16 @@ const validSignUp = (
     return {
       isValid: false,
       errors: { ...signupErrors, newPassword: "Password name is required." },
+    };
+  if (!EMAIL_REGEX.test(email))
+    return {
+      isValid: false,
+      errors: { ...signupErrors, email: "Enter a valid EmailID." },
+    };
+  if (!PASSWORD_UPPERCASE_REGEX.test(newPassword))
+    return {
+      isValid: false,
+      errors: { ...signupErrors, newPassword: "Must contain a Uppercase." },
     };
   return {
     isValid: true,

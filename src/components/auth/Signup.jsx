@@ -49,6 +49,7 @@ const Signup = ({ toggleAuth }) => {
         <button
           className=" w50 border-reset font-lg pd"
           onClick={() => toggleAuth(true)}
+          type="button"
         >
           LOGIN
         </button>
@@ -89,7 +90,9 @@ const Signup = ({ toggleAuth }) => {
         name="newPassword"
         onChange={(e) => signUpInputHandler(e)}
       />
-      <button className="pd border-none">SIGN IN</button>
+      <button className="pd border-none" type="button">
+        SIGN IN
+      </button>
     </form>
   );
 };

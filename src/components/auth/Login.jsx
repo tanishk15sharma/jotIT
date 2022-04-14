@@ -50,6 +50,7 @@ const Login = ({ toggleAuth }) => {
         <button
           className=" w50 font-lg border-reset pd"
           onClick={() => toggleAuth(false)}
+          type="button"
         >
           SIGNUP
         </button>
@@ -76,8 +77,9 @@ const Login = ({ toggleAuth }) => {
       >
         Test Credientials
       </button>
-
-      <button className="pd border-none">LOG IN</button>
+      <button className="pd border-none" type="button">
+        LOG IN
+      </button>
     </form>
   );
 };

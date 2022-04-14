@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { NoteModal } from "../note-modal/NoteModal";
 const Sidebar = () => {
   const [toggleModal, setToggleModal] = useState(false);
-  console.log(toggleModal);
+
   return (
     <aside className="sidebar">
       <ul className="sidebar-list">

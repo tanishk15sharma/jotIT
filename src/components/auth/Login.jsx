@@ -6,10 +6,16 @@ const Login = ({ toggleAuth }) => {
     password: "",
   });
 
-  const loginInputHandler = (e) => {
-    setLogin((data) => ({ ...data, [e.traget.name]: e.traget.value }));
-  };
+  const [loginErrors, setLoginEErrors] = useState({
+    email: "",
+    password: "",
+    others: "",
+  });
 
+  const loginInputHandler = (e) => {
+    setLogin((data) => ({ ...data, [e.target.name]: e.target.value }));
+  };
+  console.log(login);
   return (
     <>
       <div className="flex-cl h30">

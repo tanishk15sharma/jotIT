@@ -63,6 +63,12 @@ const Signup = ({ toggleAuth }) => {
         name="firstName"
         onChange={(e) => signUpInputHandler(e)}
       />
+      {signupErrors.firstName && (
+        <span className="err-msg font-sm mg-rl-2">
+          <i className="fa-solid fa-circle-exclamation color-err"></i>
+          {signupErrors.firstName}
+        </span>
+      )}
       <input
         type="text"
         placeholder="LAST NAME"
@@ -71,6 +77,12 @@ const Signup = ({ toggleAuth }) => {
         name="lastName"
         onChange={(e) => signUpInputHandler(e)}
       />
+      {signupErrors.lastName && (
+        <span className="err-msg font-sm mg-rl-2">
+          <i className="fa-solid fa-circle-exclamation color-err"></i>
+          {signupErrors.lastName}
+        </span>
+      )}
       <input
         type="text"
         placeholder="EMAIL"
@@ -79,20 +91,31 @@ const Signup = ({ toggleAuth }) => {
         name="email"
         onChange={(e) => signUpInputHandler(e)}
       />
+      {signupErrors.email && (
+        <span className="err-msg font-sm mg-rl-2">
+          <i className="fa-solid fa-circle-exclamation color-err"></i>
+          {signupErrors.email}
+        </span>
+      )}
 
       <input
         type="text"
         placeholder="CREATE PASSWORD"
         className="pd mg-rl-2 
-      mg-bottom-1
+     
       "
-        value={signup.password}
+        value={signup.newPassword}
         name="newPassword"
         onChange={(e) => signUpInputHandler(e)}
       />
-      <button className="pd border-none" type="button">
-        SIGN IN
-      </button>
+      {signupErrors.newPassword && (
+        <span className="err-msg font-sm mg-rl-2 ">
+          <i className="fa-solid fa-circle-exclamation color-err"></i>
+          {signupErrors.newPassword}
+        </span>
+      )}
+      <div className="mg-bottom-1"></div>
+      <button className="pd border-none">SIGN IN</button>
     </form>
   );
 };

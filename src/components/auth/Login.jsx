@@ -63,6 +63,13 @@ const Login = ({ toggleAuth }) => {
         onChange={(e) => loginInputHandler(e)}
         value={login.email}
       />
+      {loginErrors.email && (
+        <span className="err-msg font-sm mg-rl-2">
+          <i className="fa-solid fa-circle-exclamation color-err"></i>
+          {loginErrors.email}
+        </span>
+      )}
+
       <input
         type="text"
         name="password"
@@ -71,15 +78,21 @@ const Login = ({ toggleAuth }) => {
         value={login.password}
         onChange={(e) => loginInputHandler(e)}
       />
+
+      {loginErrors.password && (
+        <span className="err-msg font-sm mg-rl-2">
+          <i className="fa-solid fa-circle-exclamation color-err"></i>
+          {loginErrors.password}
+        </span>
+      )}
+
       <button
         className=" border-reset  mg-bottom-3 txt-start mg-left-2 txt-underline"
         onClick={() => testLogin()}
       >
         Test Credientials
       </button>
-      <button className="pd border-none" type="button">
-        LOG IN
-      </button>
+      <button className="pd border-none">LOG IN</button>
     </form>
   );
 };

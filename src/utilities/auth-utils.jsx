@@ -43,7 +43,7 @@ const validSignUp = (
   if (!newPassword)
     return {
       isValid: false,
-      errors: { ...signupErrors, newPassword: "Password name is required." },
+      errors: { ...signupErrors, newPassword: "Create New Password" },
     };
   if (!EMAIL_REGEX.test(email))
     return {

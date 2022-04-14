@@ -40,7 +40,9 @@ const Login = ({ toggleAuth }) => {
       console.log(err.response);
     }
   };
-
+  const testLogin = () => {
+    setLogin({ email: "adarshbalika@gmail.com", password: "adarshBalika123" });
+  };
   console.log(loginErrors);
   return (
     <form className="flex-cl h30" onSubmit={handleLoginSubmit}>
@@ -69,7 +71,10 @@ const Login = ({ toggleAuth }) => {
         value={login.password}
         onChange={(e) => loginInputHandler(e)}
       />
-      <button className=" border-reset  mg-bottom-3 txt-start mg-left-2 txt-underline">
+      <button
+        className=" border-reset  mg-bottom-3 txt-start mg-left-2 txt-underline"
+        onClick={() => testLogin()}
+      >
         Test Credientials
       </button>
 

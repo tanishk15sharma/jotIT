@@ -35,11 +35,20 @@
   margin-bottom: 2rem;
 }
 .mg-top-1 {
+  margin-top: 1.2rem;
+}
+.mg-top-3 {
   margin-top: 3.15rem;
 }
-
 .mg-bottom-1 {
+  margin-bottom: 1.2rem;
+}
+.mg-bottom-3 {
   margin-bottom: 3.15rem;
+}
+
+.mg-left-2 {
+  margin-left: 2rem;
 }
 .mg-rl-2 {
   margin-left: 2rem;
@@ -105,4 +114,10 @@
 }
 .border-none {
   border: none;
+}
+.txt-start {
+  text-align: start;
+}
+.txt-underline {
+  text-decoration: underline;
 }

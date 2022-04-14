@@ -1,8 +1,10 @@
 import axios from "axios";
 import React, { useState } from "react";
+import { useAuth } from "../../context/AuthContext";
 import { validSignUp } from "../../utilities/auth-utils";
 
 const Signup = ({ toggleAuth }) => {
+  const { setAuth } = useAuth();
   const [signup, setSignup] = useState({
     firstName: "",
     lastName: "",
@@ -24,12 +26,10 @@ const Signup = ({ toggleAuth }) => {
   const handleSignUpSubmit = (e) => {
     e.preventDefault();
     const { isValid, errors } = validSignUp(signup, signupErrors);
-
     if (!isValid) {
       setSignupErrors(errors);
       return;
     }
-
     postSignUpData(signup);
   };
 
@@ -38,6 +38,7 @@ const Signup = ({ toggleAuth }) => {
       const { data, status } = await axios.post("/api/auth/signup", signup);
       console.log(data);
       if (status !== 201) return;
+      setAuth({ isLoggedIn: true, eocodedToken: data.encodedToken });
     } catch (err) {
       console.log(err.response);
     }

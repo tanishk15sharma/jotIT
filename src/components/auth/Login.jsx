@@ -1,8 +1,10 @@
 import axios from "axios";
 import React, { useState } from "react";
+import { useAuth } from "../../context/AuthContext";
 import { validLogin } from "../../utilities/auth-utils";
 
 const Login = ({ toggleAuth }) => {
+  const { setAuth } = useAuth();
   const [login, setLogin] = useState({
     email: "",
     password: "",
@@ -37,8 +39,8 @@ const Login = ({ toggleAuth }) => {
         email,
         password,
       });
-      console.log(data);
       if (status !== 200) return;
+      setAuth({ isLoggedIn: true, encodedToken: data.encodedToken });
     } catch (err) {
       console.log(err.response);
     }

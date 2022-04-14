@@ -16,9 +16,14 @@ const Login = ({ toggleAuth }) => {
     setLogin((data) => ({ ...data, [e.target.name]: e.target.value }));
     setLoginErrors((err) => ({ ...err, [e.target.name]: "" }));
   };
-  console.log(login);
+
+  const handleLoginSubmit = (e) => {
+    e.preventDefault();
+    const { isValid, errors } = validLogin(loginData, loginErrors);
+  };
+
   return (
-    <form className="flex-cl h30">
+    <form className="flex-cl h30" onSubmit={handleLoginSubmit}>
       <div className="border-bottom">
         <button className=" w50 border-rg font-lg pd">LOG IN</button>
         <button

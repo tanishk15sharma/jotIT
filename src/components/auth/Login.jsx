@@ -33,8 +33,12 @@ const Login = ({ toggleAuth }) => {
 
   const postLoginData = async (email, password) => {
     try {
-      const res = await axios.post("/api/auth/login", { email, password });
-      console.log(res);
+      const { data, status } = await axios.post("/api/auth/login", {
+        email,
+        password,
+      });
+      console.log(data);
+      if (status !== 200) return;
     } catch (err) {
       console.log(err.response);
     }
@@ -44,7 +48,7 @@ const Login = ({ toggleAuth }) => {
   };
 
   return (
-    <form className="flex-cl h30" onSubmit={handleLoginSubmit}>
+    <form className="flex-cl h30 fixed-w30" onSubmit={handleLoginSubmit}>
       <div className="border-bottom">
         <button className=" w50 border-rg font-lg pd">LOG IN</button>
         <button

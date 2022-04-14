@@ -35,8 +35,9 @@ const Signup = ({ toggleAuth }) => {
 
   const postSignUpData = async () => {
     try {
-      const res = await axios.post("/api/auth/signup", signup);
-      console.log(res);
+      const { data, status } = await axios.post("/api/auth/signup", signup);
+      console.log(data);
+      if (status !== 201) return;
     } catch (err) {
       console.log(err.response);
     }
@@ -44,7 +45,7 @@ const Signup = ({ toggleAuth }) => {
 
   console.log(signupErrors);
   return (
-    <form className="flex-cl" onSubmit={handleSignUpSubmit}>
+    <form className="flex-cl fixed-w30" onSubmit={handleSignUpSubmit}>
       <div className="border-bottom">
         <button
           className=" w50 border-reset font-lg pd"

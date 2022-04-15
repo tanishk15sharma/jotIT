@@ -41,6 +41,7 @@ const NoteModal = ({ toggleModal }) => {
           }
           modules={NoteModal.modules}
           formats={NoteModal.formats}
+          placeholder="Write something........"
         />
         <footer className="modal-footer mg-1 relative">
           <select name="priority" className="border-none pointer">

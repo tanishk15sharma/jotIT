@@ -9,32 +9,32 @@ const Sidebar = () => {
     <aside className="sidebar">
       <ul className="sidebar-list">
         <Link to="/">
-          <li>
+          <li className="sidebar-txt">
             <span className="material-icons side-icon"> home </span>
             HOME
           </li>
         </Link>
         <Link to="/label">
-          <li>
+          <li className="sidebar-txt">
             <span className="material-icons side-icon">label </span>
             LABELS
           </li>
         </Link>
         <Link to="/archive">
-          <li>
+          <li className="sidebar-txt">
             <span className="material-icons side-icon"> archive </span>
             ARCHIVE
           </li>
         </Link>
         <Link to="trash">
-          <li>
+          <li className="sidebar-txt">
             <span className="material-icons side-icon"> delete </span>
             TRASH
           </li>
         </Link>
 
         <Link to="/">
-          <li>
+          <li className="sidebar-txt">
             <span className="material-icons side-icon"> account_circle </span>
             PROFILE
           </li>

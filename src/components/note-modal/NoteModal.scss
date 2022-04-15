@@ -1,0 +1,19 @@
+@import "../../variables";
+.fixed-container {
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(9, 13, 15, 0.18);
+  .note-modal {
+    background-color: $white;
+    width: 50%;
+  }
+  .note-body {
+    border: 1px solid $green;
+  }
+}
+//   background: transparent;

@@ -119,11 +119,17 @@
 .w100 {
   width: 100%;
 }
-.reset-input {
+
+.reset-input_xl {
   border: none;
   padding: 0.5rem 1rem;
   font-size: 1.2rem;
 }
+
+.reset-input_xl:focus {
+  outline: none;
+}
+
 .reset-input:focus {
   outline: none;
 }

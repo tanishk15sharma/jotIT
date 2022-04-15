@@ -5,6 +5,7 @@ import { LabelModal } from "./label-modal/LabelModal";
 
 import "./NoteModal.scss";
 const NoteModal = ({ toggleModal }) => {
+  const [toggleLableModal, setToggleLableModal] = useState(false);
   const [noteDetails, setNoteDetails] = useState({
     title: "",
     body: "",
@@ -12,14 +13,14 @@ const NoteModal = ({ toggleModal }) => {
     isPinned: false,
     tags: [],
   });
-  console.log(noteDetails);
+
   return (
     <main className="fixed-container" onClick={(e) => toggleModal(false)}>
       <div className="note-modal" onClick={(e) => e.stopPropagation()}>
         <div className="mg-1 flex-spBt-center">
           <input
             placeholder="Title"
-            className="reset-input"
+            className="reset-input_xl"
             value={noteDetails.title}
             onChange={(e) =>
               setNoteDetails((details) => ({
@@ -42,8 +43,13 @@ const NoteModal = ({ toggleModal }) => {
         />
         <footer className="modal-footer mg-1 relative">
           <span className="material-icons pd-rl-1">palette</span>
-          <span className="material-icons ">label</span>
-          <LabelModal />
+          <span
+            className="material-icons pointer"
+            onClick={() => setToggleLableModal((val) => !val)}
+          >
+            label
+          </span>
+          {toggleLableModal && <LabelModal />}
           <button className="border-reset mg-left-1 pointer">Save</button>
         </footer>
       </div>

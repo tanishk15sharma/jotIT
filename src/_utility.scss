@@ -24,6 +24,10 @@
 .pd-left-1 {
   padding-left: 1rem;
 }
+.pd-rl-1 {
+  padding-right: 1rem;
+  padding-left: 1rem;
+}
 .mg-1 {
   margin: 1rem;
 }
@@ -47,8 +51,16 @@
   margin-bottom: 3.15rem;
 }
 
+.mg-left-1 {
+  margin-left: 1rem;
+}
 .mg-left-2 {
   margin-left: 2rem;
+}
+
+.mg-rl-2 {
+  margin-left: 2rem;
+  margin-right: 2rem;
 }
 .mg-rl-2 {
   margin-left: 2rem;
@@ -126,4 +138,7 @@
 }
 .color-err {
   color: $error;
+}
+.pointer {
+  cursor: pointer;
 }

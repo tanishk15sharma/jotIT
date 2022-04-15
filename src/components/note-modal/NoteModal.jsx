@@ -12,6 +12,7 @@ const NoteModal = ({ toggleModal }) => {
     color: "",
     isPinned: false,
     tags: [],
+    priority: "Medium",
   });
 
   return (
@@ -42,6 +43,11 @@ const NoteModal = ({ toggleModal }) => {
           formats={NoteModal.formats}
         />
         <footer className="modal-footer mg-1 relative">
+          <select name="priority" className="border-none pointer">
+            <option value="medium">Medium</option>
+            <option value="high">High</option>
+            <option value="low">Low</option>
+          </select>
           <span className="material-icons pd-rl-1">palette</span>
           <span
             className="material-icons pointer"

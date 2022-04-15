@@ -1,37 +1,99 @@
 import React, { useState } from "react";
+import ReactQuill from "react-quill";
+import "react-quill/dist/quill.snow.css";
+import { LabelModal } from "./label-modal/LabelModal";
+
 import "./NoteModal.scss";
 const NoteModal = ({ toggleModal }) => {
-  const [noteTitle, setNoteTitle] = useState("");
-  const [noteBody, setNoteBody] = useState("");
+  const [toggleLableModal, setToggleLableModal] = useState(false);
+  const [noteDetails, setNoteDetails] = useState({
+    title: "",
+    body: "",
+    color: "",
+    isPinned: false,
+    tags: [],
+    priority: "Medium",
+  });
+
   return (
-    <div className="fixed-container" onClick={(e) => toggleModal(false)}>
+    <main className="fixed-container" onClick={(e) => toggleModal(false)}>
       <div className="note-modal" onClick={(e) => e.stopPropagation()}>
         <div className="mg-1 flex-spBt-center">
           <input
-            placeholder="title"
-            className="reset-input"
-            value={noteTitle}
-            onChange={(e) => setNoteTitle(e.target.value)}
+            placeholder="Title"
+            className="reset-input_xl"
+            value={noteDetails.title}
+            onChange={(e) =>
+              setNoteDetails((details) => ({
+                ...details,
+                title: e.target.value,
+              }))
+            }
           />
-          <i class="fa-solid fa-thumbtack"></i>
+          <span className="material-icons  rotate-left"> push_pin </span>
         </div>
-        <div className="note-body mg-1">
-          <div>icons</div>
-          <textarea
-            name=""
-            id=""
-            cols="30"
-            rows="10"
-            className="reset-input"
-            placeholder="Write your note here ."
-            value={noteBody}
-            onChange={(e) => setNoteBody(e.target.value)}
-          ></textarea>
-        </div>
-        <footer>color label</footer>
+        <ReactQuill
+          theme="snow"
+          value={noteDetails.body}
+          className="mg-1"
+          onChange={(value) =>
+            setNoteDetails((details) => ({ ...details, body: value }))
+          }
+          modules={NoteModal.modules}
+          formats={NoteModal.formats}
+          placeholder="Write something........"
+        />
+        <footer className="modal-footer mg-1 relative">
+          <select name="priority" className="border-none pointer">
+            <option value="medium">Medium</option>
+            <option value="high">High</option>
+            <option value="low">Low</option>
+          </select>
+          <span className="material-icons pd-rl-1">palette</span>
+          <span
+            className="material-icons pointer"
+            onClick={() => setToggleLableModal((val) => !val)}
+          >
+            label
+          </span>
+          {toggleLableModal && <LabelModal />}
+          <button className="border-reset mg-left-1 pointer">Save</button>
+        </footer>
       </div>
-    </div>
+    </main>
   );
 };
 
 export { NoteModal };
+NoteModal.modules = {
+  toolbar: [
+    [{ header: "1" }, { header: "2" }, { font: [] }],
+    // [{ size: [] }],
+    ["bold", "italic", "underline", "strike", "blockquote"],
+    [{ align: [] }],
+    [{ color: [] }],
+    [{ list: "ordered" }, { list: "bullet" }],
+    ["link", "image", "code-block"],
+    ["clean"],
+  ],
+};
+NoteModal.formats = [
+  "header",
+  "font",
+  "size",
+  "bold",
+  "italic",
+  "underline",
+  "strike",
+  "blockquote",
+  "color",
+  "background",
+  "list",
+  "bullet",
+  "indent",
+  "link",
+  "video",
+  "image",
+  "code-block",
+  "align",
+];

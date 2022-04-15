@@ -116,7 +116,7 @@ const Signup = ({ toggleAuth }) => {
           {signupErrors.newPassword}
         </span>
       )}
-      <div className="mg-bottom-1"></div>
+      <div className="mg-bottom-1_2"></div>
       <button className="pd border-none">SIGN IN</button>
     </form>
   );

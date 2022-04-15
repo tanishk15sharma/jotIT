@@ -2,9 +2,9 @@ import React from "react";
 import "./NoteCard.scss";
 const NoteCard = () => {
   return (
-    <section className="mg-b-1">
+    <section className="mg-bottom-1">
       <div className="flex-spBt pd-top-1">
-        <h3 className="w50 mg-b-1">TITLE</h3>
+        <h3 className="w50 mg-bottom-1">TITLE</h3>
         <span className="material-icons icon rotate-left"> push_pin </span>
       </div>
       <p class="w100">

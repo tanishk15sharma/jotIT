@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
+import { LabelModal } from "./label-modal/LabelModal";
 
 import "./NoteModal.scss";
 const NoteModal = ({ toggleModal }) => {
@@ -39,9 +40,10 @@ const NoteModal = ({ toggleModal }) => {
           modules={NoteModal.modules}
           formats={NoteModal.formats}
         />
-        <footer className="modal-footer mg-1">
+        <footer className="modal-footer mg-1 relative">
           <span className="material-icons pd-rl-1">palette</span>
-          <span className="material-icons">label</span>
+          <span className="material-icons ">label</span>
+          <LabelModal />
           <button className="border-reset mg-left-1 pointer">Save</button>
         </footer>
       </div>

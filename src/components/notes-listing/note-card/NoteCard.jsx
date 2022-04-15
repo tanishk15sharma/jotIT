@@ -7,7 +7,7 @@ const NoteCard = () => {
         <h3 className="w50 mg-bottom-1">TITLE</h3>
         <span className="material-icons icon rotate-left"> push_pin </span>
       </div>
-      <p class="w100">
+      <p className="w100">
         Body of the aaaaaaanoteBody of the aaaaaaanoteBody of the
       </p>
       <footer className="note-footer">

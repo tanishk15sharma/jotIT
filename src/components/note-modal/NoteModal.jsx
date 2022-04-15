@@ -1,10 +1,13 @@
 import React, { useState } from "react";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
+import { useNotes } from "../../context/NotesContext";
+import { addNote } from "../../utilities/allNotes-utils";
 import { LabelModal } from "./label-modal/LabelModal";
 
 import "./NoteModal.scss";
 const NoteModal = ({ toggleModal }) => {
+  const { setNotes } = useNotes();
   const [toggleLableModal, setToggleLableModal] = useState(false);
   const [noteDetails, setNoteDetails] = useState({
     title: "",
@@ -57,7 +60,12 @@ const NoteModal = ({ toggleModal }) => {
             label
           </span>
           {toggleLableModal && <LabelModal />}
-          <button className="border-reset mg-left-1 pointer">Save</button>
+          <button
+            className="border-reset mg-left-1 pointer"
+            onClick={() => addNote(noteDetails, setNotes)}
+          >
+            Save
+          </button>
         </footer>
       </div>
     </main>

@@ -3,7 +3,7 @@ import "./Search.scss";
 const Search = () => {
   return (
     <div className="search-container">
-      <i class="fa-solid fa-magnifying-glass font-lg"></i>
+      <i className="fa-solid fa-magnifying-glass font-lg"></i>
       <input placeholder="Search" className="reset-input_xl w80" />
     </div>
   );

@@ -1,15 +1,14 @@
 import React from "react";
 import "./NoteCard.scss";
-const NoteCard = () => {
+const NoteCard = ({ note }) => {
+  console.log(note.title);
   return (
     <section className="mg-bottom-1">
       <div className="flex-spBt pd-top-1">
-        <h3 className="w50 mg-bottom-1">TITLE</h3>
+        <h3 className="w50 mg-bottom-1"> {note.title} </h3>
         <span className="material-icons icon rotate-left"> push_pin </span>
       </div>
-      <p className="w100">
-        Body of the aaaaaaanoteBody of the aaaaaaanoteBody of the
-      </p>
+      <p className="w100">{note.body}</p>
       <footer className="note-footer">
         <span className="font-sm">05/04/2022</span>
         <div>

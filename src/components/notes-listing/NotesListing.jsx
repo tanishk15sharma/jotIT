@@ -8,10 +8,9 @@ const NotesListing = () => {
 
   return (
     <div className="NotesListing ">
-      <NoteCard />
-      <NoteCard />
-      <NoteCard />
-      <NoteCard />
+      {notes.map((note) => (
+        <NoteCard note={note} key={note._id} />
+      ))}
     </div>
   );
 };

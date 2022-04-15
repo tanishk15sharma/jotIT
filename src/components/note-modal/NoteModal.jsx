@@ -19,7 +19,7 @@ const NoteModal = ({ toggleModal }) => {
   });
 
   return (
-    <main className="fixed-container" onClick={(e) => toggleModal(false)}>
+    <main className="fixed-container" onClick={() => toggleModal(false)}>
       <div className="note-modal" onClick={(e) => e.stopPropagation()}>
         <div className="mg-1 flex-spBt-center">
           <input
@@ -61,8 +61,12 @@ const NoteModal = ({ toggleModal }) => {
           </span>
           {toggleLableModal && <LabelModal />}
           <button
+            disabled={!noteDetails.title}
             className="border-reset mg-left-1 pointer"
-            onClick={() => addNote(noteDetails, setNotes)}
+            onClick={() => {
+              addNote(noteDetails, setNotes);
+              toggleModal(false);
+            }}
           >
             Save
           </button>

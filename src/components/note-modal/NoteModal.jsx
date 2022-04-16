@@ -49,7 +49,17 @@ const NoteModal = ({ toggleModal, editId }) => {
               }))
             }
           />
-          <span className="material-icons  rotate-left"> push_pin </span>
+          <span
+            className="material-icons  rotate-left pointer"
+            onClick={() =>
+              setNoteDetails((details) => ({
+                ...details,
+                isPinned: !details.isPinned,
+              }))
+            }
+          >
+            push_pin
+          </span>
         </div>
         <ReactQuill
           theme="snow"

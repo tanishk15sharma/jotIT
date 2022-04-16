@@ -7,8 +7,9 @@ const Trash = () => {
 
   return (
     <div className="w100">
+      <h3>Clear All</h3>
       {trash.map((note) => (
-        <TrashCard note={note} />
+        <TrashCard note={note} key={note._id} />
       ))}
     </div>
   );

@@ -1,9 +1,12 @@
 import React, { useRef, useEffect } from "react";
+import { useNotes } from "../../context/NotesContext";
 import { useTrash } from "../../context/TrashContext";
+import { addNote } from "../../utilities/allNotes-utils";
 import { deleteTrashNote } from "../../utilities/trash-utils";
 
 const TrashCard = ({ note }) => {
-  const { trash, setTrash } = useTrash();
+  const { setNotes } = useNotes();
+  const { setTrash } = useTrash();
 
   const bodyRef = useRef(null);
 
@@ -12,7 +15,7 @@ const TrashCard = ({ note }) => {
       bodyRef.current.innerHTML = note.body;
     }
   }, [bodyRef, note]);
-  console.log(trash);
+
   return (
     <section className="mg-bottom-1">
       <div className="flex-spBt pd-top-1">
@@ -24,7 +27,15 @@ const TrashCard = ({ note }) => {
       <footer className="note-footer">
         <span className="font-sm"> {new Date(note.date).toDateString()} </span>
         <div>
-          <span class="material-icons">restore_from_trash</span>
+          <span
+            className="material-icons pointer"
+            onClick={() => {
+              addNote(note, setNotes);
+              deleteTrashNote(note._id, setTrash);
+            }}
+          >
+            restore_from_trash
+          </span>
           <span
             className="material-icons icon"
             onClick={() => deleteTrashNote(note._id, setTrash)}

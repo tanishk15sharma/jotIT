@@ -4,6 +4,7 @@ import "react-quill/dist/quill.snow.css";
 
 import { useNotes } from "../../context/NotesContext";
 import { addNote, editNote } from "../../utilities/allNotes-utils";
+import { colors } from "../../utilities/helper-utils";
 
 import { LabelModal } from "./label-modal/LabelModal";
 
@@ -11,7 +12,6 @@ import "./NoteModal.scss";
 const NoteModal = ({ toggleModal, editId }) => {
   const { notes, setNotes } = useNotes();
   const [toggleLableModal, setToggleLableModal] = useState(false);
-  const [isEdit, setIsEdit] = useState(false);
   const [noteDetails, setNoteDetails] = useState({
     title: "",
     body: "",
@@ -21,6 +21,8 @@ const NoteModal = ({ toggleModal, editId }) => {
     priority: "Medium",
     date: Date.now(),
   });
+  const [currColor, setCurrColor] = useState(0);
+  console.log(noteDetails);
   useEffect(() => {
     if (editId) {
       let selectedNote = notes.find((note) => note._id === editId);
@@ -31,11 +33,14 @@ const NoteModal = ({ toggleModal, editId }) => {
 
   return (
     <main className="fixed-container" onClick={() => toggleModal(false)}>
-      <div className="note-modal" onClick={(e) => e.stopPropagation()}>
+      <div
+        className={`note-modal bg-${colors[currColor]}`}
+        onClick={(e) => e.stopPropagation()}
+      >
         <div className="mg-1 flex-spBt-center">
           <input
             placeholder="Title"
-            className="reset-input_xl"
+            className="reset-input_xl bg-none"
             value={noteDetails.title || ""}
             onChange={(e) =>
               setNoteDetails((details) => ({
@@ -58,12 +63,31 @@ const NoteModal = ({ toggleModal, editId }) => {
           placeholder="Write something........"
         />
         <footer className="modal-footer mg-1 relative">
-          <select name="priority" className="border-none pointer">
+          <select
+            name="priority"
+            className="border-none pointer bg-none"
+            onChange={(e) =>
+              setNoteDetails((details) => ({
+                ...details,
+                priority: e.target.value,
+              }))
+            }
+            value={noteDetails.priority}
+          >
             <option value="medium">Medium</option>
             <option value="high">High</option>
             <option value="low">Low</option>
           </select>
-          <span className="material-icons pd-rl-1">palette</span>
+          <span
+            className="material-icons pd-rl-1 pointer"
+            onClick={() => {
+              currColor === 6
+                ? setCurrColor(0)
+                : setCurrColor((previousColor) => previousColor + 1);
+            }}
+          >
+            palette
+          </span>
           <span
             className="material-icons pointer"
             onClick={() => setToggleLableModal((val) => !val)}

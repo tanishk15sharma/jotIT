@@ -1,7 +1,9 @@
 import React from "react";
+import { useNotes } from "../../../context/NotesContext";
+import { deleteNote } from "../../../utilities/allNotes-utils";
 import "./NoteCard.scss";
 const NoteCard = ({ note }) => {
-  console.log(note.title);
+  const { setNotes } = useNotes();
   return (
     <section className="mg-bottom-1">
       <div className="flex-spBt pd-top-1">
@@ -16,7 +18,12 @@ const NoteCard = ({ note }) => {
           <span className="material-icons icon"> palette </span>
           <span className="material-icons icon">label </span>
           <span className="material-icons icon"> archive </span>
-          <span className="material-icons icon"> delete </span>
+          <span
+            className="material-icons icon"
+            onClick={() => deleteNote(note._id, setNotes)}
+          >
+            delete
+          </span>
         </div>
       </footer>
     </section>

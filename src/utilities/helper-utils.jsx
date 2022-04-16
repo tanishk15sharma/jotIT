@@ -5,4 +5,6 @@ const PASSWORD_UPPERCASE_REGEX = new RegExp("^(?=.*?[A-Z])");
 
 const getToken = () => JSON.parse(localStorage.getItem("auth"))?.encodedToken;
 
-export { EMAIL_REGEX, PASSWORD_UPPERCASE_REGEX, getToken };
+const colors = ["yellow", "red", "green", "blue", "orange", "grey", "lime"];
+
+export { EMAIL_REGEX, PASSWORD_UPPERCASE_REGEX, getToken, colors };

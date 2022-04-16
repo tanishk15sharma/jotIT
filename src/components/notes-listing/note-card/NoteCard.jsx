@@ -1,9 +1,11 @@
 import React, { useState, useRef, useEffect } from "react";
 import { useNotes } from "../../../context/NotesContext";
 import { deleteNote } from "../../../utilities/allNotes-utils";
+import { colors } from "../../../utilities/helper-utils";
 import { NoteModal } from "../../note-modal/NoteModal";
 import "./NoteCard.scss";
 const NoteCard = ({ note }) => {
+  const [currColor, setCurrColor] = useState(0);
   const bodyRef = useRef(null);
   const [toggleModal, setToggleModal] = useState(false);
 
@@ -15,7 +17,7 @@ const NoteCard = ({ note }) => {
 
   const { setNotes } = useNotes();
   return (
-    <section className="mg-bottom-1">
+    <section className={`mg-bottom-1  bg-${colors[currColor]}`}>
       <div className="flex-spBt pd-top-1">
         <h3 className="w50 mg-bottom-1"> {note.title} </h3>
         <span className="material-icons icon rotate-left"> push_pin </span>
@@ -36,7 +38,16 @@ const NoteCard = ({ note }) => {
             <NoteModal toggleModal={setToggleModal} editId={note._id} />
           )}
 
-          <span className="material-icons icon"> palette </span>
+          <span
+            className="material-icons icon"
+            onClick={() =>
+              currColor === 6
+                ? setCurrColor(0)
+                : setCurrColor((previousColor) => previousColor + 1)
+            }
+          >
+            palette
+          </span>
           <span className="material-icons icon">label </span>
           <span className="material-icons icon"> archive </span>
           <span

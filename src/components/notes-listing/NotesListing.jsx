@@ -8,7 +8,7 @@ const NotesListing = () => {
 
   return (
     <div className="NotesListing ">
-      {notes.map((note) => (
+      {notes?.map((note) => (
         <NoteCard note={note} key={note._id} />
       ))}
     </div>

@@ -1,8 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import { useNotes } from "../../../context/NotesContext";
 import { deleteNote } from "../../../utilities/allNotes-utils";
+import { NoteModal } from "../../note-modal/NoteModal";
 import "./NoteCard.scss";
 const NoteCard = ({ note }) => {
+  const [toggleModal, setToggleModal] = useState(false);
+
   const { setNotes } = useNotes();
   return (
     <section className="mg-bottom-1">
@@ -14,7 +17,16 @@ const NoteCard = ({ note }) => {
       <footer className="note-footer">
         <span className="font-sm">05/04/2022</span>
         <div>
-          <span className="material-icons icon"> edit </span>
+          <span
+            className="material-icons icon"
+            onClick={() => setToggleModal((val) => !val)}
+          >
+            edit
+          </span>
+          {toggleModal && (
+            <NoteModal toggleModal={setToggleModal} editId={note._id} />
+          )}
+
           <span className="material-icons icon"> palette </span>
           <span className="material-icons icon">label </span>
           <span className="material-icons icon"> archive </span>

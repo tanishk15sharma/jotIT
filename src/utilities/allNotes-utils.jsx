@@ -35,6 +35,25 @@ const addNote = async (note, setNotes) => {
   }
 };
 
+const editNote = async (id, note, setNotes) => {
+  console.log(id);
+  try {
+    const { data, status } = await axios.post(
+      `/api/notes/${id}`,
+      { note },
+      {
+        headers: {
+          authorization: getToken(),
+        },
+      }
+    );
+    if (status !== 201) return;
+    setNotes(data.notes);
+  } catch (err) {
+    console.log(err.response);
+  }
+};
+
 const deleteNote = async (id, setNotes) => {
   try {
     const { data, status } = await axios.delete(`/api/notes/${id}`, {
@@ -49,4 +68,4 @@ const deleteNote = async (id, setNotes) => {
   }
 };
 
-export { getAllNotes, addNote, deleteNote };
+export { getAllNotes, addNote, deleteNote, editNote };

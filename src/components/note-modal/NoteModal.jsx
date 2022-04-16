@@ -1,11 +1,17 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
+
+import { useNotes } from "../../context/NotesContext";
+import { addNote, editNote } from "../../utilities/allNotes-utils";
+
 import { LabelModal } from "./label-modal/LabelModal";
 
 import "./NoteModal.scss";
-const NoteModal = ({ toggleModal }) => {
+const NoteModal = ({ toggleModal, editId }) => {
+  const { notes, setNotes } = useNotes();
   const [toggleLableModal, setToggleLableModal] = useState(false);
+  const [isEdit, setIsEdit] = useState(false);
   const [noteDetails, setNoteDetails] = useState({
     title: "",
     body: "",
@@ -14,15 +20,22 @@ const NoteModal = ({ toggleModal }) => {
     tags: [],
     priority: "Medium",
   });
+  useEffect(() => {
+    if (editId) {
+      let selectedNote = notes.find((note) => note._id === editId);
+      console.log(selectedNote);
+      setNoteDetails({ ...selectedNote });
+    }
+  }, [editId]);
 
   return (
-    <main className="fixed-container" onClick={(e) => toggleModal(false)}>
+    <main className="fixed-container" onClick={() => toggleModal(false)}>
       <div className="note-modal" onClick={(e) => e.stopPropagation()}>
         <div className="mg-1 flex-spBt-center">
           <input
             placeholder="Title"
             className="reset-input_xl"
-            value={noteDetails.title}
+            value={noteDetails.title || ""}
             onChange={(e) =>
               setNoteDetails((details) => ({
                 ...details,
@@ -34,7 +47,7 @@ const NoteModal = ({ toggleModal }) => {
         </div>
         <ReactQuill
           theme="snow"
-          value={noteDetails.body}
+          value={noteDetails.body || ""}
           className="mg-1"
           onChange={(value) =>
             setNoteDetails((details) => ({ ...details, body: value }))
@@ -57,7 +70,30 @@ const NoteModal = ({ toggleModal }) => {
             label
           </span>
           {toggleLableModal && <LabelModal />}
-          <button className="border-reset mg-left-1 pointer">Save</button>
+
+          {!editId ? (
+            <button
+              disabled={!noteDetails.title}
+              className="border-reset mg-left-1 pointer"
+              onClick={() => {
+                addNote(noteDetails, setNotes);
+                toggleModal(false);
+              }}
+            >
+              Save
+            </button>
+          ) : (
+            <button
+              disabled={!noteDetails.title}
+              className="border-reset mg-left-1 pointer"
+              onClick={() => {
+                editNote(editId, noteDetails, setNotes);
+                toggleModal(false);
+              }}
+            >
+              Update
+            </button>
+          )}
         </footer>
       </div>
     </main>

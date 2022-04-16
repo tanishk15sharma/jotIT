@@ -1,10 +1,17 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { useNotes } from "../../../context/NotesContext";
 import { deleteNote } from "../../../utilities/allNotes-utils";
 import { NoteModal } from "../../note-modal/NoteModal";
 import "./NoteCard.scss";
 const NoteCard = ({ note }) => {
+  const bodyRef = useRef(null);
   const [toggleModal, setToggleModal] = useState(false);
+
+  useEffect(() => {
+    if (bodyRef.current) {
+      bodyRef.current.innerHTML = note.body;
+    }
+  }, [bodyRef, note]);
 
   const { setNotes } = useNotes();
   return (
@@ -13,9 +20,11 @@ const NoteCard = ({ note }) => {
         <h3 className="w50 mg-bottom-1"> {note.title} </h3>
         <span className="material-icons icon rotate-left"> push_pin </span>
       </div>
-      <p className="w100">{note.body}</p>
+      <p ref={bodyRef} className="w100">
+        {note.body}
+      </p>
       <footer className="note-footer">
-        <span className="font-sm">05/04/2022</span>
+        <span className="font-sm"> {new Date(note.date).toDateString()} </span>
         <div>
           <span
             className="material-icons icon"

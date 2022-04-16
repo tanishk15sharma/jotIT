@@ -19,6 +19,7 @@ const NoteModal = ({ toggleModal, editId }) => {
     isPinned: false,
     tags: [],
     priority: "Medium",
+    date: Date.now(),
   });
   useEffect(() => {
     if (editId) {

@@ -8,9 +8,14 @@ const NotesListing = () => {
 
   return (
     <div className="NotesListing ">
-      {notes?.map((note) => (
-        <NoteCard note={note} key={note._id} />
-      ))}
+      <h2>PINNED</h2>
+      {notes?.map(
+        (note) => note.isPinned && <NoteCard note={note} key={note._id} />
+      )}
+      <h2>OTHERS</h2>
+      {notes?.map(
+        (note) => !note.isPinned && <NoteCard note={note} key={note._id} />
+      )}
     </div>
   );
 };

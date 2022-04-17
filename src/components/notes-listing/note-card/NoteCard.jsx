@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import { useNotes } from "../../../context/NotesContext";
+import { useTrash } from "../../../context/TrashContext";
 import { deleteNote } from "../../../utilities/allNotes-utils";
 import { colors } from "../../../utilities/helper-utils";
 import { NoteModal } from "../../note-modal/NoteModal";
@@ -8,6 +9,7 @@ const NoteCard = ({ note }) => {
   const [currColor, setCurrColor] = useState(0);
   const bodyRef = useRef(null);
   const [toggleModal, setToggleModal] = useState(false);
+  const { setTrash } = useTrash();
 
   useEffect(() => {
     if (bodyRef.current) {
@@ -52,7 +54,10 @@ const NoteCard = ({ note }) => {
           <span className="material-icons icon"> archive </span>
           <span
             className="material-icons icon"
-            onClick={() => deleteNote(note._id, setNotes)}
+            onClick={() => {
+              setTrash((trashNotes) => [...trashNotes, note]);
+              deleteNote(note._id, setNotes);
+            }}
           >
             delete
           </span>

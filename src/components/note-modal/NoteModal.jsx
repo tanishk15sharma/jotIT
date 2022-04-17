@@ -19,7 +19,7 @@ const NoteModal = ({ toggleModal, editId }) => {
     date: Date.now(),
   });
   const [currColor, setCurrColor] = useState(0);
-  console.log(noteDetails);
+
   useEffect(() => {
     if (editId) {
       let selectedNote = notes.find((note) => note._id === editId);

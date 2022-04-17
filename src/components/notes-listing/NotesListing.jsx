@@ -1,5 +1,6 @@
 import React from "react";
 import { useNotes } from "../../context/NotesContext";
+import { Toast } from "../toast/Toast";
 import { NoteCard } from "./note-card/NoteCard";
 
 const NotesListing = () => {
@@ -16,6 +17,7 @@ const NotesListing = () => {
       {notes?.map(
         (note) => !note.isPinned && <NoteCard note={note} key={note._id} />
       )}
+      <Toast />
     </div>
   );
 };

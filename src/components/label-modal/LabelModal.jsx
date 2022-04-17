@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useLabels } from "../../context/LabelContext";
 import "./LabelModal.scss";
-const LabelModal = ({ setNoteDetails }) => {
+const LabelModal = ({ setNoteDetails, noteDetails }) => {
   const { labels, setLabels } = useLabels();
   const [lableName, setLableName] = useState("");
   const addNewLabel = () => {
@@ -57,14 +57,8 @@ const LabelModal = ({ setNoteDetails }) => {
               type="checkbox"
               id={option}
               value={option}
-              onChange={
-                handleLableInput
-                // () =>
-                // setNoteDetails((details) => ({
-                //   ...details,
-                //   tags: [...details.tags, option],
-                // }))
-              }
+              onChange={handleLableInput}
+              checked={noteDetails.tags.includes(option)}
             />
             {option}
           </label>

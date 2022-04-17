@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useLabels } from "../../context/LabelContext";
 import "./LabelModal.scss";
-const LabelModal = () => {
+const LabelModal = ({ setNoteDetails }) => {
   const { labels, setLabels } = useLabels();
   const [lableName, setLableName] = useState("");
   const addNewLabel = () => {
@@ -21,6 +21,20 @@ const LabelModal = () => {
     setLableName("");
   };
 
+  const handleLableInput = (e) => {
+    if (e.target.checked) {
+      setNoteDetails((noteDetails) => ({
+        ...noteDetails,
+        tags: [...noteDetails.tags, e.target.value],
+      }));
+    } else {
+      setNoteDetails((noteDetails) => ({
+        ...noteDetails,
+        tags: noteDetails.tags.filter((tag) => tag !== e.target.value),
+      }));
+    }
+  };
+
   return (
     <div className="labelModal pd fixed-w150 box-shadow-light">
       <div className="flex-spBt border-bottom mg-bottom-1">
@@ -38,7 +52,21 @@ const LabelModal = () => {
       <div className="flex-cl">
         {labels.map((option, index) => (
           <label key={index} htmlFor={option} className="flex-center">
-            <input type="checkbox" id={option} /> {option}
+            <input
+              key={index}
+              type="checkbox"
+              id={option}
+              value={option}
+              onChange={
+                handleLableInput
+                // () =>
+                // setNoteDetails((details) => ({
+                //   ...details,
+                //   tags: [...details.tags, option],
+                // }))
+              }
+            />
+            {option}
           </label>
         ))}
       </div>

@@ -102,7 +102,7 @@ const NoteModal = ({ toggleModal, editId }) => {
           >
             label
           </span>
-          {toggleLableModal && <LabelModal />}
+          {toggleLableModal && <LabelModal setNoteDetails={setNoteDetails} />}
 
           {!editId ? (
             <button

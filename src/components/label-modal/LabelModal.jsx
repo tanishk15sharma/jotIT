@@ -2,8 +2,25 @@ import React, { useState } from "react";
 import { useLabels } from "../../context/LabelContext";
 import "./LabelModal.scss";
 const LabelModal = () => {
-  const { labels } = useLabels();
+  const { labels, setLabels } = useLabels();
   const [lableName, setLableName] = useState("");
+  const addNewLabel = () => {
+    if (
+      labels.some(
+        (label) => label.toLowerCase() === lableName.toLocaleLowerCase()
+      )
+    ) {
+      alert("Label already exixts");
+      return;
+    }
+    if (!lableName) {
+      alert("Write label Name");
+      return;
+    }
+    setLabels((options) => [...options, lableName]);
+    setLableName("");
+  };
+
   return (
     <div className="labelModal pd fixed-w150 box-shadow-light">
       <div className="flex-spBt border-bottom mg-bottom-1">
@@ -14,7 +31,9 @@ const LabelModal = () => {
           value={lableName}
           onChange={(e) => setLableName(e.target.value)}
         />
-        <span className="material-icons">add</span>
+        <span className="material-icons pointer" onClick={addNewLabel}>
+          add
+        </span>
       </div>
       <div className="flex-cl">
         {labels.map((option, index) => (

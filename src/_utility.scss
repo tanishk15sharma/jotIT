@@ -53,6 +53,9 @@
 .mg-top-1 {
   margin-top: 1.2rem;
 }
+.mg-top-2 {
+  margin-top: 2rem;
+}
 .mg-top-3 {
   margin-top: 3.15rem;
 }
@@ -184,4 +187,13 @@
 }
 .bg-none {
   background: transparent;
+}
+
+.labelTag {
+  margin-right: 10px;
+  padding: 0 0.7rem;
+  background-color: $secondary-color;
+  opacity: 0.7;
+  border-radius: 5px;
+  z-index: 1;
 }

@@ -1,3 +1,4 @@
+@import "../../../variables";
 section {
   background: #f0f0f0;
   min-height: 8rem;
@@ -11,7 +12,7 @@ section {
   justify-content: space-between;
   align-content: flex-end;
   padding-top: 1rem;
-  margin-top: 2rem;
+
   padding-bottom: 0.5rem;
 
   .icon {
@@ -20,6 +21,18 @@ section {
     cursor: pointer;
   }
 }
+.tags-div {
+  // border: 1px solid red;
+  margin-top: 2rem;
+}
 .rotate-left {
   transform: rotate(30deg);
+}
+.labelTag {
+  margin-right: 10px;
+  padding: 0 0.7rem;
+  background-color: $secondary-color;
+  opacity: 0.7;
+  border-radius: 5px;
+  z-index: 1;
 }

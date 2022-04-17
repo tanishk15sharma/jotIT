@@ -1,10 +1,11 @@
 import React, { useRef, useEffect } from "react";
 import { useArchive } from "../../context/ArchiveContext";
 import { useNotes } from "../../context/NotesContext";
+import { restoreNote } from "../../utilities/archives-utils";
 
 const Archive = () => {
-  const { archives } = useArchive();
-
+  const { archives, setArchives } = useArchive();
+  const { setNotes } = useNotes();
   const bodyRef = useRef(null);
 
   // useEffect(() => {
@@ -12,27 +13,36 @@ const Archive = () => {
   //     bodyRef.current.innerHTML = note.body;
   //   }
   // }, [bodyRef, note]);
-  // console.log(archives);
+
   return (
-    <div>
+    <div className="w100">
       {archives.map((note) => {
         return (
-          <section>
-            <h1>aaa</h1>
-            <div>
-              <h3> {note.title} </h3>
+          <section className="mg-bottom-1 ">
+            <div className="flex-spBt pd-top-1">
+              <h3 className="w50 mg-bottom-1"> {note.title} </h3>
             </div>
-            <p ref={bodyRef}>{note.body}</p>
-            <div>
+            <p ref={bodyRef} className="w100">
+              {note.body}
+            </p>
+            <div className="mg-top-2">
               {note.tags.map((labelTag) => (
-                <span> {labelTag} </span>
+                <span className="labelTag"> {labelTag} </span>
               ))}
             </div>
-            <footer>
-              <span>{new Date(note.date).toDateString()}</span>
+            <footer className="note-footer">
+              <span className="font-sm">
+                {new Date(note.date).toDateString()}
+              </span>
               <div>
-                <span>unarchive</span>
                 <span
+                  class="material-icons pointer"
+                  onClick={() => restoreNote(note._id, setNotes, setArchives)}
+                >
+                  unarchive
+                </span>
+                <span
+                  className="material-icons icon"
                   onClick={() => {
                     // addNote(note, setNotes);
                   }}

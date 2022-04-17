@@ -17,7 +17,6 @@ const NotesListing = () => {
       {notes?.map(
         (note) => !note.isPinned && <NoteCard note={note} key={note._id} />
       )}
-      <Toast />
     </div>
   );
 };

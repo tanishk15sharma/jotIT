@@ -5,7 +5,9 @@ import "react-quill/dist/quill.snow.css";
 import { useNotes } from "../../context/NotesContext";
 import { addNote, editNote } from "../../utilities/allNotes-utils";
 import { colors } from "../../utilities/helper-utils";
-import { LabelModal } from "../label-modal/LabelModal";
+
+import { LabelModal } from "./label-modal/LabelModal";
+
 import "./NoteModal.scss";
 const NoteModal = ({ toggleModal, editId }) => {
   const { notes, setNotes } = useNotes();
@@ -70,11 +72,6 @@ const NoteModal = ({ toggleModal, editId }) => {
           formats={NoteModal.formats}
           placeholder="Write something........"
         />
-        <div className="mg-1">
-          {noteDetails.tags.map((labelTag) => (
-            <span className="labelTag"> {labelTag} </span>
-          ))}
-        </div>
         <footer className="modal-footer mg-1 relative">
           <select
             name="priority"
@@ -107,12 +104,7 @@ const NoteModal = ({ toggleModal, editId }) => {
           >
             label
           </span>
-          {toggleLableModal && (
-            <LabelModal
-              noteDetails={noteDetails}
-              setNoteDetails={setNoteDetails}
-            />
-          )}
+          {toggleLableModal && <LabelModal />}
 
           {!editId ? (
             <button

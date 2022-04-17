@@ -7,8 +7,6 @@ import { BrowserRouter } from "react-router-dom";
 import { AuthProvider } from "./context/AuthContext";
 import { NotesProvider } from "./context/NotesContext";
 import { TrashProvider } from "./context/TrashContext";
-import { LabelProvider } from "./context/LabelContext";
-
 makeServer();
 
 ReactDOM.render(
@@ -17,9 +15,7 @@ ReactDOM.render(
       <AuthProvider>
         <NotesProvider>
           <TrashProvider>
-            <LabelProvider>
-              <App />
-            </LabelProvider>
+            <App />
           </TrashProvider>
         </NotesProvider>
       </AuthProvider>

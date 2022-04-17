@@ -70,6 +70,11 @@ const NoteModal = ({ toggleModal, editId }) => {
           formats={NoteModal.formats}
           placeholder="Write something........"
         />
+        <div className="mg-1">
+          {noteDetails.tags.map((labelTag) => (
+            <span className="labelTag"> {labelTag} </span>
+          ))}
+        </div>
         <footer className="modal-footer mg-1 relative">
           <select
             name="priority"

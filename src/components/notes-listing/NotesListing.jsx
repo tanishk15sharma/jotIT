@@ -1,13 +1,13 @@
 import React from "react";
 import { useNotes } from "../../context/NotesContext";
 import { NoteCard } from "./note-card/NoteCard";
-import "./NotesListing.scss";
+
 const NotesListing = () => {
   const { notes } = useNotes();
   console.log(notes);
 
   return (
-    <div className="NotesListing ">
+    <div className="pd-1">
       <h2>PINNED</h2>
       {notes?.map(
         (note) => note.isPinned && <NoteCard note={note} key={note._id} />

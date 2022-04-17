@@ -55,7 +55,6 @@ const NoteCard = ({ note }) => {
           >
             palette
           </span>
-          <span className="material-icons icon">label </span>
           <span className="material-icons icon"> archive </span>
           <span
             className="material-icons icon"

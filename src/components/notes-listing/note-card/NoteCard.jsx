@@ -1,7 +1,9 @@
 import React, { useState, useRef, useEffect } from "react";
+import { useArchive } from "../../../context/ArchiveContext";
 import { useNotes } from "../../../context/NotesContext";
 import { useTrash } from "../../../context/TrashContext";
 import { deleteNote } from "../../../utilities/allNotes-utils";
+import { addToArchives } from "../../../utilities/archives-utils";
 import { colors } from "../../../utilities/helper-utils";
 import { NoteModal } from "../../note-modal/NoteModal";
 import "./NoteCard.scss";
@@ -10,14 +12,14 @@ const NoteCard = ({ note }) => {
   const bodyRef = useRef(null);
   const [toggleModal, setToggleModal] = useState(false);
   const { setTrash } = useTrash();
-
+  const { setNotes } = useNotes();
+  const { setArchives } = useArchive();
   useEffect(() => {
     if (bodyRef.current) {
       bodyRef.current.innerHTML = note.body;
     }
   }, [bodyRef, note]);
 
-  const { setNotes } = useNotes();
   return (
     <section className={`mg-bottom-1  bg-${colors[currColor]}`}>
       <div className="flex-spBt pd-top-1">
@@ -55,7 +57,12 @@ const NoteCard = ({ note }) => {
           >
             palette
           </span>
-          <span className="material-icons icon"> archive </span>
+          <span
+            className="material-icons icon pointer"
+            onClick={() => addToArchives(note._id, note, setNotes, setArchives)}
+          >
+            archive
+          </span>
           <span
             className="material-icons icon"
             onClick={() => {

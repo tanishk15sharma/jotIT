@@ -14,4 +14,25 @@ const getAllArchives = async () => {
     console.log(err.response);
   }
 };
-export { getAllArchives };
+
+const addToArchives = async (id, note, setNotes, setArchives) => {
+  try {
+    const { data, status } = await axios.post(
+      `/api/notes/archives/${id}`,
+      { note },
+      {
+        headers: {
+          authorization: getToken(),
+        },
+      }
+    );
+
+    if (status !== 201) return;
+    setNotes(data.notes);
+    setArchives(data.archives);
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+export { getAllArchives, addToArchives };

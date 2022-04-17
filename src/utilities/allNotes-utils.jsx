@@ -10,7 +10,6 @@ const getAllNotes = async () => {
       },
     });
     if (status !== 200) return;
-
     return data.notes;
   } catch (err) {
     console.log(err.response);
@@ -36,7 +35,6 @@ const addNote = async (note, setNotes) => {
 };
 
 const editNote = async (id, note, setNotes) => {
-  console.log(id);
   try {
     const { data, status } = await axios.post(
       `/api/notes/${id}`,

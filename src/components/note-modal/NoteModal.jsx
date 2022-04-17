@@ -5,9 +5,7 @@ import "react-quill/dist/quill.snow.css";
 import { useNotes } from "../../context/NotesContext";
 import { addNote, editNote } from "../../utilities/allNotes-utils";
 import { colors } from "../../utilities/helper-utils";
-
-import { LabelModal } from "./label-modal/LabelModal";
-
+import { LabelModal } from "../label-modal/LabelModal";
 import "./NoteModal.scss";
 const NoteModal = ({ toggleModal, editId }) => {
   const { notes, setNotes } = useNotes();

@@ -1,6 +1,8 @@
 import React, { useState } from "react";
+import { useLabels } from "../../context/LabelContext";
 import "./LabelModal.scss";
 const LabelModal = () => {
+  const { labels } = useLabels();
   const [lableName, setLableName] = useState("");
   return (
     <div className="labelModal pd fixed-w150 box-shadow-light">
@@ -14,7 +16,13 @@ const LabelModal = () => {
         />
         <span className="material-icons">add</span>
       </div>
-      <div>nothing here</div>
+      <div className="flex-cl">
+        {labels.map((option, index) => (
+          <label key={index} htmlFor={option} className="flex-center">
+            <input type="checkbox" id={option} /> {option}
+          </label>
+        ))}
+      </div>
     </div>
   );
 };

@@ -27,6 +27,11 @@ const NoteCard = ({ note }) => {
       <p ref={bodyRef} className="w100">
         {note.body}
       </p>
+      <div className="mg-top-2">
+        {note.tags.map((labelTag) => (
+          <span className="labelTag"> {labelTag} </span>
+        ))}
+      </div>
       <footer className="note-footer">
         <span className="font-sm"> {new Date(note.date).toDateString()} </span>
         <div>
@@ -50,7 +55,6 @@ const NoteCard = ({ note }) => {
           >
             palette
           </span>
-          <span className="material-icons icon">label </span>
           <span className="material-icons icon"> archive </span>
           <span
             className="material-icons icon"

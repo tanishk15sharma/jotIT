@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
-
 import { useNotes } from "../../context/NotesContext";
 import { addNote, editNote } from "../../utilities/allNotes-utils";
 import { colors } from "../../utilities/helper-utils";

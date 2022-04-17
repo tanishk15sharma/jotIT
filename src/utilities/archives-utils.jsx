@@ -54,4 +54,18 @@ const restoreNote = async (id, setNotes, setArchives) => {
   }
 };
 
-export { getAllArchives, addToArchives, restoreNote };
+const deleteFromArchive = async (id, setArchives) => {
+  try {
+    const { data, status } = await axios.delete(`/api/archives/delete/${id}`, {
+      headers: {
+        authorization: getToken(),
+      },
+    });
+    if (status !== 200) return;
+    setArchives(data.archives);
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+export { getAllArchives, addToArchives, restoreNote, deleteFromArchive };

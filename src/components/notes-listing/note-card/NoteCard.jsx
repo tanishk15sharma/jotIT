@@ -31,7 +31,9 @@ const NoteCard = ({ note }) => {
       </p>
       <div className="mg-top-2">
         {note.tags.map((labelTag) => (
-          <span className="labelTag"> {labelTag} </span>
+          <span key={labelTag} className="labelTag">
+            {labelTag}
+          </span>
         ))}
       </div>
       <footer className="note-footer">

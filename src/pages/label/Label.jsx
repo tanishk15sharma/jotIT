@@ -9,7 +9,7 @@ const Label = () => {
   return (
     <div className="w100">
       {labels.map((label) => (
-        <div>
+        <div key={label}>
           <h1>{label}</h1>
           {notes.some((note) => note.tags.includes(label)) ? ( //first checking is their any note which has particular label
             notes

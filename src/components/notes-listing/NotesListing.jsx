@@ -5,7 +5,6 @@ import { NoteCard } from "./note-card/NoteCard";
 
 const NotesListing = () => {
   const { notes } = useNotes();
-  console.log(notes);
 
   return (
     <div className="pd-1">

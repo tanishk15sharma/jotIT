@@ -1,11 +1,13 @@
 import React, { useRef, useEffect } from "react";
 import { useArchive } from "../../context/ArchiveContext";
 import { useNotes } from "../../context/NotesContext";
-import { restoreNote } from "../../utilities/archives-utils";
+import { useTrash } from "../../context/TrashContext";
+import { deleteFromArchive, restoreNote } from "../../utilities/archives-utils";
 
 const Archive = () => {
   const { archives, setArchives } = useArchive();
   const { setNotes } = useNotes();
+  const { setTrash } = useTrash();
   const bodyRef = useRef(null);
 
   // useEffect(() => {
@@ -18,7 +20,7 @@ const Archive = () => {
     <div className="w100">
       {archives.map((note) => {
         return (
-          <section className="mg-bottom-1 ">
+          <section className="mg-bottom-1" key={note._id}>
             <div className="flex-spBt pd-top-1">
               <h3 className="w50 mg-bottom-1"> {note.title} </h3>
             </div>
@@ -27,7 +29,9 @@ const Archive = () => {
             </p>
             <div className="mg-top-2">
               {note.tags.map((labelTag) => (
-                <span className="labelTag"> {labelTag} </span>
+                <span key={labelTag} className="labelTag">
+                  {labelTag}
+                </span>
               ))}
             </div>
             <footer className="note-footer">
@@ -36,7 +40,7 @@ const Archive = () => {
               </span>
               <div>
                 <span
-                  class="material-icons pointer"
+                  className="material-icons pointer"
                   onClick={() => restoreNote(note._id, setNotes, setArchives)}
                 >
                   unarchive
@@ -44,7 +48,8 @@ const Archive = () => {
                 <span
                   className="material-icons icon"
                   onClick={() => {
-                    // addNote(note, setNotes);
+                    deleteFromArchive(note._id, setArchives);
+                    setTrash((trashNotes) => [...trashNotes, note]);
                   }}
                 >
                   delete

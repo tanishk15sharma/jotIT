@@ -70,8 +70,10 @@ const NoteModal = ({ toggleModal, editId }) => {
           placeholder="Write something........"
         />
         <div className="mg-1">
-          {noteDetails.tags.map((labelTag) => (
-            <span className="labelTag"> {labelTag} </span>
+          {noteDetails.tags.map((labelTag, index) => (
+            <span key={index} className="labelTag">
+              {labelTag}
+            </span>
           ))}
         </div>
         <footer className="modal-footer mg-1 relative">

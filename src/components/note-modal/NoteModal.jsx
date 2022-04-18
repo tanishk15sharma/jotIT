@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
-
 import { useNotes } from "../../context/NotesContext";
 import { addNote, editNote } from "../../utilities/allNotes-utils";
 import { colors } from "../../utilities/helper-utils";
@@ -20,7 +19,7 @@ const NoteModal = ({ toggleModal, editId }) => {
     date: Date.now(),
   });
   const [currColor, setCurrColor] = useState(0);
-  console.log(noteDetails);
+
   useEffect(() => {
     if (editId) {
       let selectedNote = notes.find((note) => note._id === editId);
@@ -71,8 +70,10 @@ const NoteModal = ({ toggleModal, editId }) => {
           placeholder="Write something........"
         />
         <div className="mg-1">
-          {noteDetails.tags.map((labelTag) => (
-            <span className="labelTag"> {labelTag} </span>
+          {noteDetails.tags.map((labelTag, index) => (
+            <span key={index} className="labelTag">
+              {labelTag}
+            </span>
           ))}
         </div>
         <footer className="modal-footer mg-1 relative">

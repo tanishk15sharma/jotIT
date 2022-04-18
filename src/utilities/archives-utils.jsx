@@ -1,25 +1,24 @@
 import axios from "axios";
-
 import { getToken } from "./helper-utils";
 
-const getAllNotes = async () => {
+const getAllArchives = async () => {
   try {
-    const { data, status } = await axios.get("/api/notes", {
+    const { data, status } = await axios.get("/api/archives", {
       headers: {
         authorization: getToken(),
       },
     });
     if (status !== 200) return;
-    return data.notes;
+    return data.archives;
   } catch (err) {
     console.log(err.response);
   }
 };
 
-const addNote = async (note, setNotes) => {
+const addToArchives = async (id, note, setNotes, setArchives) => {
   try {
     const { data, status } = await axios.post(
-      "/api/notes",
+      `/api/notes/archives/${id}`,
       { note },
       {
         headers: {
@@ -27,43 +26,46 @@ const addNote = async (note, setNotes) => {
         },
       }
     );
+
     if (status !== 201) return;
     setNotes(data.notes);
-  } catch (err) {
-    console.log(err.response);
-  }
-};
-
-const editNote = async (id, note, setNotes) => {
-  try {
-    const { data, status } = await axios.post(
-      `/api/notes/${id}`,
-      { note },
-      {
-        headers: {
-          authorization: getToken(),
-        },
-      }
-    );
-    if (status !== 201) return;
-    setNotes(data.notes);
-  } catch (err) {
-    console.log(err.response);
-  }
-};
-
-const deleteNote = async (id, setNotes) => {
-  try {
-    const { data, status } = await axios.delete(`/api/notes/${id}`, {
-      headers: {
-        authorization: getToken(),
-      },
-    });
-    if (status !== 200) return;
-    setNotes(data.notes);
+    setArchives(data.archives);
   } catch (err) {
     console.log(err);
   }
 };
 
-export { getAllNotes, addNote, deleteNote, editNote };
+const restoreNote = async (id, setNotes, setArchives) => {
+  try {
+    const { data, status } = await axios.post(
+      `/api/archives/restore/${id}`,
+      {},
+      {
+        headers: {
+          authorization: getToken(),
+        },
+      }
+    );
+    if (status !== 200) return;
+    setNotes(data.notes);
+    setArchives(data.archives);
+  } catch (err) {
+    console.log(err.response);
+  }
+};
+
+const deleteFromArchive = async (id, setArchives) => {
+  try {
+    const { data, status } = await axios.delete(`/api/archives/delete/${id}`, {
+      headers: {
+        authorization: getToken(),
+      },
+    });
+    if (status !== 200) return;
+    setArchives(data.archives);
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+export { getAllArchives, addToArchives, restoreNote, deleteFromArchive };

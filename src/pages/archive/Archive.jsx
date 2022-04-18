@@ -38,6 +38,7 @@ const Archive = () => {
               <span className="font-sm">
                 {new Date(note.date).toDateString()}
               </span>
+
               <div>
                 <span
                   className="material-icons pointer"

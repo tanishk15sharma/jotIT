@@ -8,7 +8,6 @@ import { colors } from "../../../utilities/helper-utils";
 import { NoteModal } from "../../note-modal/NoteModal";
 import "./NoteCard.scss";
 const NoteCard = ({ note }) => {
-  const [currColor, setCurrColor] = useState(0);
   const bodyRef = useRef(null);
   const [toggleModal, setToggleModal] = useState(false);
   const { setTrash } = useTrash();
@@ -21,7 +20,7 @@ const NoteCard = ({ note }) => {
   }, [bodyRef, note]);
 
   return (
-    <section className={`mg-bottom-1  bg-${colors[currColor]}`}>
+    <section className={`mg-bottom-1  bg-${colors[note.color]}`}>
       <div className="flex-spBt pd-top-1">
         <h3 className="w50 mg-bottom-1"> {note.title} </h3>
         <span className="material-icons icon rotate-left"> push_pin </span>
@@ -39,26 +38,18 @@ const NoteCard = ({ note }) => {
       <footer className="note-footer">
         <span className="font-sm"> {new Date(note.date).toDateString()} </span>
         <div>
-          <span
-            className="material-icons icon"
-            onClick={() => setToggleModal((val) => !val)}
-          >
-            edit
-          </span>
+          <button className="border-reset">
+            <span
+              className="material-icons icon"
+              onClick={() => setToggleModal((val) => !val)}
+            >
+              edit
+            </span>
+          </button>
           {toggleModal && (
             <NoteModal toggleModal={setToggleModal} editId={note._id} />
           )}
 
-          <span
-            className="material-icons icon"
-            onClick={() =>
-              currColor === 6
-                ? setCurrColor(0)
-                : setCurrColor((previousColor) => previousColor + 1)
-            }
-          >
-            palette
-          </span>
           <span
             className="material-icons icon pointer"
             onClick={() => addToArchives(note._id, note, setNotes, setArchives)}

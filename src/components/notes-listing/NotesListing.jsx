@@ -9,13 +9,17 @@ const NotesListing = () => {
   return (
     <div className="pd-1">
       <h2>PINNED</h2>
-      {notes?.map(
-        (note) => note.isPinned && <NoteCard note={note} key={note._id} />
-      )}
+      {notes
+        ?.filter((note) => note.isPinned)
+        .map((note) => (
+          <NoteCard note={note} key={note._id} />
+        ))}
       <h2>OTHERS</h2>
-      {notes?.map(
-        (note) => !note.isPinned && <NoteCard note={note} key={note._id} />
-      )}
+      {notes
+        ?.filter((note) => !note.isPinned)
+        .map((note) => (
+          <NoteCard note={note} key={note._id} />
+        ))}
     </div>
   );
 };

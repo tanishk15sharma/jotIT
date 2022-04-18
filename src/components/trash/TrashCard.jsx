@@ -3,7 +3,7 @@ import { useNotes } from "../../context/NotesContext";
 import { useTrash } from "../../context/TrashContext";
 import { addNote } from "../../utilities/allNotes-utils";
 import { deleteTrashNote } from "../../utilities/trash-utils";
-
+import { colors } from "../../utilities/helper-utils";
 const TrashCard = ({ note }) => {
   const { setNotes } = useNotes();
   const { setTrash } = useTrash();
@@ -17,7 +17,7 @@ const TrashCard = ({ note }) => {
   }, [bodyRef, note]);
 
   return (
-    <section className="mg-bottom-1">
+    <section className={`mg-bottom-1  bg-${colors[note.color]}`}>
       <div className="flex-spBt pd-top-1">
         <h3 className="w50 mg-bottom-1"> {note.title} </h3>
       </div>

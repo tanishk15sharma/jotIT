@@ -12,13 +12,12 @@ const NoteModal = ({ toggleModal, editId }) => {
   const [noteDetails, setNoteDetails] = useState({
     title: "",
     body: "",
-    color: "",
+    color: 0,
     isPinned: false,
     tags: [],
     priority: "Medium",
     date: Date.now(),
   });
-  const [currColor, setCurrColor] = useState(0);
 
   useEffect(() => {
     if (editId) {
@@ -31,7 +30,7 @@ const NoteModal = ({ toggleModal, editId }) => {
   return (
     <main className="fixed-container" onClick={() => toggleModal(false)}>
       <div
-        className={`note-modal bg-${colors[currColor]}`}
+        className={`note-modal bg-${colors[noteDetails.color]}`}
         onClick={(e) => e.stopPropagation()}
       >
         <div className="mg-1 flex-spBt-center">
@@ -95,9 +94,10 @@ const NoteModal = ({ toggleModal, editId }) => {
           <span
             className="material-icons pd-rl-1 pointer"
             onClick={() => {
-              currColor === 6
-                ? setCurrColor(0)
-                : setCurrColor((previousColor) => previousColor + 1);
+              setNoteDetails((details) => ({
+                ...details,
+                color: details.color === 6 ? 0 : details.color + 1,
+              }));
             }}
           >
             palette

@@ -7,6 +7,8 @@ import { colors } from "../../utilities/helper-utils";
 import { LabelModal } from "../label-modal/LabelModal";
 import { IoColorPaletteOutline } from "react-icons/io5";
 import { MdLabelOutline } from "react-icons/md";
+import { BsPinAngle } from "react-icons/bs";
+import { BsPinAngleFill } from "react-icons/bs";
 import "./NoteModal.scss";
 const NoteModal = ({ toggleModal, editId }) => {
   const { notes, setNotes } = useNotes();
@@ -47,7 +49,7 @@ const NoteModal = ({ toggleModal, editId }) => {
               }))
             }
           />
-          <span
+          {/* <span
             className="material-icons  rotate-left pointer"
             onClick={() =>
               setNoteDetails((details) => ({
@@ -57,7 +59,18 @@ const NoteModal = ({ toggleModal, editId }) => {
             }
           >
             push_pin
-          </span>
+          </span> */}
+          <button
+            onClick={() =>
+              setNoteDetails((details) => ({
+                ...details,
+                isPinned: !details.isPinned,
+              }))
+            }
+            className="border-reset font-lg-m pointer"
+          >
+            {noteDetails.isPinned ? <BsPinAngleFill /> : <BsPinAngle />}
+          </button>
         </div>
         <ReactQuill
           theme="snow"

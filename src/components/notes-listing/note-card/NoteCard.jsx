@@ -7,7 +7,6 @@ import { addToArchives } from "../../../utilities/archives-utils";
 import { colors } from "../../../utilities/helper-utils";
 import { NoteModal } from "../../note-modal/NoteModal";
 import { BsPinAngle } from "react-icons/bs";
-
 import { BsPinAngleFill } from "react-icons/bs";
 import "./NoteCard.scss";
 const NoteCard = ({ note }) => {

@@ -13,17 +13,29 @@ const NoteCard = ({ note }) => {
   const { setTrash } = useTrash();
   const { setNotes } = useNotes();
   const { setArchives } = useArchive();
+  const { _id } = note;
+
   useEffect(() => {
     if (bodyRef.current) {
       bodyRef.current.innerHTML = note.body;
     }
   }, [bodyRef, note]);
 
+  const togglePin = () => {
+    setNotes((notes) =>
+      notes.map((note) =>
+        note._id === _id ? { ...note, isPinned: !note.isPinned } : note
+      )
+    );
+  };
+
   return (
     <section className={`mg-bottom-1  bg-${colors[note.color]}`}>
       <div className="flex-spBt pd-top-1">
         <h3 className="w50 mg-bottom-1"> {note.title} </h3>
-        <span className="material-icons icon rotate-left"> push_pin </span>
+        <span className="material-icons icon rotate-left" onClick={togglePin}>
+          push_pin
+        </span>
       </div>
       <p ref={bodyRef} className="w100">
         {note.body}

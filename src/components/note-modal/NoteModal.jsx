@@ -5,6 +5,8 @@ import { useNotes } from "../../context/NotesContext";
 import { addNote, editNote } from "../../utilities/allNotes-utils";
 import { colors } from "../../utilities/helper-utils";
 import { LabelModal } from "../label-modal/LabelModal";
+import { IoColorPaletteOutline } from "react-icons/io5";
+
 import "./NoteModal.scss";
 const NoteModal = ({ toggleModal, editId }) => {
   const { notes, setNotes } = useNotes();
@@ -91,7 +93,7 @@ const NoteModal = ({ toggleModal, editId }) => {
             <option value="high">High</option>
             <option value="low">Low</option>
           </select>
-          <span
+          {/* <span
             className="material-icons pd-rl-1 pointer"
             onClick={() => {
               setNoteDetails((details) => ({
@@ -101,7 +103,8 @@ const NoteModal = ({ toggleModal, editId }) => {
             }}
           >
             palette
-          </span>
+          </span> */}
+          <IoColorPaletteOutline />
           <span
             className="material-icons pointer"
             onClick={() => setToggleLableModal((val) => !val)}

@@ -6,6 +6,9 @@ import { deleteNote } from "../../../utilities/allNotes-utils";
 import { addToArchives } from "../../../utilities/archives-utils";
 import { colors } from "../../../utilities/helper-utils";
 import { NoteModal } from "../../note-modal/NoteModal";
+import { BsPinAngle } from "react-icons/bs";
+
+import { BsPinAngleFill } from "react-icons/bs";
 import "./NoteCard.scss";
 const NoteCard = ({ note }) => {
   const bodyRef = useRef(null);
@@ -13,7 +16,7 @@ const NoteCard = ({ note }) => {
   const { setTrash } = useTrash();
   const { setNotes } = useNotes();
   const { setArchives } = useArchive();
-  const { _id } = note;
+  const { _id, color } = note;
 
   useEffect(() => {
     if (bodyRef.current) {
@@ -33,9 +36,9 @@ const NoteCard = ({ note }) => {
     <section className={`mg-bottom-1  bg-${colors[note.color]}`}>
       <div className="flex-spBt pd-top-1">
         <h3 className="w50 mg-bottom-1"> {note.title} </h3>
-        <span className="material-icons icon rotate-left" onClick={togglePin}>
-          push_pin
-        </span>
+        <button onClick={togglePin} className="border-reset font-lg-m pointer">
+          {note.isPinned ? <BsPinAngleFill /> : <BsPinAngle />}
+        </button>
       </div>
       <p ref={bodyRef} className="w100">
         {note.body}
@@ -50,33 +53,30 @@ const NoteCard = ({ note }) => {
       <footer className="note-footer">
         <span className="font-sm"> {new Date(note.date).toDateString()} </span>
         <div>
-          <button className="border-reset">
-            <span
-              className="material-icons icon"
-              onClick={() => setToggleModal((val) => !val)}
-            >
-              edit
-            </span>
+          <button
+            className="border-reset"
+            onClick={() => setToggleModal((val) => !val)}
+          >
+            <span className="material-icons icon">edit</span>
           </button>
           {toggleModal && (
             <NoteModal toggleModal={setToggleModal} editId={note._id} />
           )}
-
-          <span
-            className="material-icons icon pointer"
+          <button
+            className="border-reset"
             onClick={() => addToArchives(note._id, note, setNotes, setArchives)}
           >
-            archive
-          </span>
-          <span
-            className="material-icons icon"
+            <span className="material-icons icon pointer">archive</span>
+          </button>
+          <button
+            className="border-reset"
             onClick={() => {
               setTrash((trashNotes) => [...trashNotes, note]);
               deleteNote(note._id, setNotes);
             }}
           >
-            delete
-          </span>
+            <span className="material-icons icon">delete</span>
+          </button>
         </div>
       </footer>
     </section>

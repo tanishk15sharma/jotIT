@@ -37,6 +37,10 @@ const NoteCard = ({ note }) => {
 
   return (
     <section className={`mg-bottom-1  bg-${colors[note.color]}`}>
+      <span className={`note-priority    ${note.priority}`}>
+        {" "}
+        {note.priority}{" "}
+      </span>
       <div className="flex-spBt pd-top-1">
         <h3 className="w50 mg-bottom-1">
           <span className="font-xl icon-hash pointer" onClick={copyLink}>
@@ -44,7 +48,7 @@ const NoteCard = ({ note }) => {
           </span>
           {note.title}
         </h3>
-        <button onClick={togglePin} className="border-reset font-lg-m">
+        <button onClick={togglePin} className="border-reset font-lg pointer">
           {note.isPinned ? <BsPinAngleFill /> : <BsPinAngle />}
         </button>
       </div>

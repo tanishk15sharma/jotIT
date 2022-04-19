@@ -38,7 +38,10 @@ const NoteModal = ({ toggleModal, editId }) => {
         className={`note-modal bg-${colors[noteDetails.color]}`}
         onClick={(e) => e.stopPropagation()}
       >
-        <div className="note-priority"> {noteDetails.priority} </div>
+        <div className={`modal-priority  ${noteDetails.priority}`}>
+          {" "}
+          {noteDetails.priority}
+        </div>
         <div className="mg-1 flex-spBt-center">
           <label htmlFor="title">
             <span className="font-xl icon-hash">#</span>
@@ -62,7 +65,7 @@ const NoteModal = ({ toggleModal, editId }) => {
                 isPinned: !details.isPinned,
               }))
             }
-            className="border-reset font-lg-m pointer"
+            className="border-reset font-lg pointer"
           >
             {noteDetails.isPinned ? <BsPinAngleFill /> : <BsPinAngle />}
           </button>
@@ -85,10 +88,10 @@ const NoteModal = ({ toggleModal, editId }) => {
             </span>
           ))}
         </div>
-        <footer className="modal-footer mg-1 relative">
+        <footer className="modal-footer mg-1 ">
           <select
             name="priority"
-            className="border-none pointer bg-none "
+            className="border-none pointer bg-none font-l"
             onChange={(e) =>
               setNoteDetails((details) => ({
                 ...details,
@@ -103,7 +106,7 @@ const NoteModal = ({ toggleModal, editId }) => {
           </select>
 
           <button
-            className="border-reset  pd-rl-1 pointer font-lg-m"
+            className="border-reset  pd-rl-1 pointer font-lg  flex "
             onClick={() => {
               setNoteDetails((details) => ({
                 ...details,
@@ -114,7 +117,7 @@ const NoteModal = ({ toggleModal, editId }) => {
             <IoColorPaletteOutline />
           </button>
           <button
-            className="border-reset  pointer font-lg-m"
+            className="border-reset  pointer font-lg flex "
             onClick={() => setToggleLableModal((val) => !val)}
           >
             <MdLabelOutline />
@@ -129,7 +132,7 @@ const NoteModal = ({ toggleModal, editId }) => {
           {!editId ? (
             <button
               disabled={!noteDetails.title}
-              className="border-reset mg-left-1 pointer"
+              className="border-reset mg-left-1 pointer font-l "
               onClick={() => {
                 addNote(noteDetails, setNotes);
                 toggleModal(false);
@@ -140,7 +143,7 @@ const NoteModal = ({ toggleModal, editId }) => {
           ) : (
             <button
               disabled={!noteDetails.title}
-              className="border-reset mg-left-1 pointer"
+              className="border-reset mg-left-1 pointer font-l"
               onClick={() => {
                 editNote(editId, noteDetails, setNotes);
                 toggleModal(false);
@@ -161,11 +164,10 @@ NoteModal.modules = {
     [{ header: "1" }, { header: "2" }, { font: [] }],
     // [{ size: [] }],
     ["bold", "italic", "underline", "strike", "blockquote"],
-    [{ align: [] }],
+
     [{ color: [] }],
     [{ list: "ordered" }, { list: "bullet" }],
     ["link", "image", "code-block"],
-    ["clean"],
   ],
 };
 NoteModal.formats = [

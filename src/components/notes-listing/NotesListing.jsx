@@ -2,7 +2,7 @@ import React from "react";
 import { useNotes } from "../../context/NotesContext";
 import { Toast } from "../toast/Toast";
 import { NoteCard } from "./note-card/NoteCard";
-import noteImg from "../assets/note-img.svg";
+import noteImgBg from "../../assets/note-img.svg";
 const NotesListing = () => {
   const { notes } = useNotes();
 
@@ -14,7 +14,7 @@ const NotesListing = () => {
     <div className="pd-1 main-con">
       {!notes.length ? (
         <div className="dim-6">
-          <img src={noteImg} className="bg-img" />
+          <img src={noteImgBg} className="bg-img" />
           <h2 className="txt-center">Add your Jot's !</h2>
         </div>
       ) : (

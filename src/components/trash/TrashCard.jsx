@@ -36,21 +36,25 @@ const TrashCard = ({ note }) => {
       <footer className="note-footer">
         <span className="font-sm"> {new Date(note.date).toDateString()} </span>
         <div>
-          <span
-            className="material-icons pointer"
-            onClick={() => {
-              addNote(note, setNotes);
-              deleteTrashNote(note._id, setTrash);
-            }}
-          >
-            restore_from_trash
-          </span>
-          <span
-            className="material-icons icon"
-            onClick={() => deleteTrashNote(note._id, setTrash)}
-          >
-            delete
-          </span>
+          <button className="border-reset pointer">
+            <span
+              className="material-icons icon"
+              onClick={() => {
+                addNote(note, setNotes);
+                deleteTrashNote(note._id, setTrash);
+              }}
+            >
+              restore_from_trash
+            </span>
+          </button>
+          <button className="border-reset pointer mg-left-p5">
+            <span
+              className="material-icons icon"
+              onClick={() => deleteTrashNote(note._id, setTrash)}
+            >
+              delete
+            </span>
+          </button>
         </div>
       </footer>
     </section>

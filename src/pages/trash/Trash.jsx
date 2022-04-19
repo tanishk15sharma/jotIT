@@ -1,7 +1,7 @@
 import React from "react";
 import { TrashCard } from "../../components/trash/TrashCard";
 import { useTrash } from "../../context/TrashContext";
-import bgDeleteImg from "../../components/assets/deletebg-img.svg";
+import deleteImgBg from "../../assets/deletebg-img.svg";
 const Trash = () => {
   const { trash, setTrash } = useTrash();
 
@@ -12,8 +12,8 @@ const Trash = () => {
       </h3>
       {trash.length === 0 ? (
         <div className="dim-6">
-          <img src={bgDeleteImg} className="bg-img" />
-          <h2 className="txt-center">No Notes in Recycle Bin</h2>
+          <img src={deleteImgBg} className="bg-img" />
+          <h2 className="txt-center">No Jot's in Recycle Bin!</h2>
         </div>
       ) : (
         <div>

@@ -18,6 +18,10 @@ const TrashCard = ({ note }) => {
 
   return (
     <section className={`mg-bottom-1  bg-${colors[note.color]}`}>
+      <span className={`note-priority    ${note.priority}`}>
+        {" "}
+        {note.priority}{" "}
+      </span>
       <div className="flex-spBt pd-top-1">
         <h3 className="w50 mg-bottom-1"> {note.title} </h3>
       </div>

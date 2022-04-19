@@ -11,19 +11,6 @@ section {
   border-radius: 10px;
   box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px,
     rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
-  .note-priority {
-    position: absolute;
-    text-orientation: upright;
-    writing-mode: vertical-rl;
-    text-transform: uppercase;
-    right: 2%;
-    opacity: 0.5;
-    font-family: "Akshar", sans-serif;
-    font-size: 12px;
-    opacity: 0;
-    transition: all 0.2s;
-    background-color: $green;
-  }
 }
 .note-priority:after {
   content: "";
@@ -66,7 +53,7 @@ section {
   border: 1px solid $main-color;
   border-radius: 2px;
 }
-.note-img {
+.bg-img {
   width: 60%;
   display: flex;
   margin: 0 auto;
@@ -82,4 +69,17 @@ section:hover .card-icon-btn {
 
 section:hover .note-priority {
   opacity: 0.6;
+}
+.note-priority {
+  position: absolute;
+  text-orientation: upright;
+  writing-mode: vertical-rl;
+  text-transform: uppercase;
+  right: 2%;
+  opacity: 0.5;
+  font-family: "Akshar", sans-serif;
+  font-size: 12px;
+  opacity: 0;
+  transition: all 0.2s;
+  background-color: $green;
 }

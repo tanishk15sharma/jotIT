@@ -13,7 +13,10 @@ const NotesListing = () => {
   return (
     <div className="pd-1 main-con">
       {!notes.length ? (
-        <img src={noteImg} className="note-img dim-5" />
+        <div className="dim-6">
+          <img src={noteImg} className="bg-img" />
+          <h2 className="txt-center">Add your Jot's !</h2>
+        </div>
       ) : (
         <>
           {pinnedNotes.length !== 0 && (

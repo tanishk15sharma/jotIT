@@ -1,3 +1,8 @@
+.flex-center {
+  display: flex;
+  align-items: center;
+}
+
 .flex-spBt-center {
   display: flex;
   justify-content: space-between;
@@ -43,6 +48,15 @@
 .pd-rl-1 {
   padding-right: 1rem;
   padding-left: 1rem;
+}
+.mg-auto {
+  margin: 0 auto;
+}
+.mg-p5 {
+  margin: 0.5rem;
+}
+.mg-left-p3 {
+  margin-left: 0.3rem;
 }
 .mg-1 {
   margin: 1rem;
@@ -147,7 +161,7 @@
 
 .reset-input_xl {
   border: none;
-  padding: 1rem 0rem;
+
   font-size: 1.2rem;
 }
 
@@ -207,4 +221,10 @@
 }
 .flow-auto {
   overflow: auto;
+}
+.border-bottom {
+  border-bottom: 1px solid $main-color;
+}
+.index-4 {
+  z-index: 4;
 }

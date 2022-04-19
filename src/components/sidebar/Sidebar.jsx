@@ -10,33 +10,33 @@ const Sidebar = () => {
       <ul className="sidebar-list">
         <Link to="/">
           <li className="sidebar-txt">
-            <span className="material-icons side-icon"> home </span>
-            HOME
+            <span className="material-icons side-icon  index-4"> home </span>
+            <span className="index-4">HOME</span>
           </li>
         </Link>
         <Link to="/label">
           <li className="sidebar-txt">
-            <span className="material-icons side-icon">label </span>
-            LABELS
+            <span className="material-icons side-icon index-4">label </span>
+            <span className="index-4">LABELS</span>
           </li>
         </Link>
         <Link to="/archive">
           <li className="sidebar-txt">
-            <span className="material-icons side-icon"> archive </span>
-            ARCHIVE
+            <span className="material-icons side-icon index-4"> archive </span>
+            <span className="index-4">ARCHIVE</span>
           </li>
         </Link>
         <Link to="trash">
           <li className="sidebar-txt">
-            <span className="material-icons side-icon"> delete </span>
-            TRASH
+            <span className="material-icons side-icon index-4"> delete </span>
+            <span className="index-4">TRASH</span>
           </li>
         </Link>
 
         <Link to="/">
           <li className="sidebar-txt">
-            <span className="material-icons side-icon"> logout </span>
-            LOGOUT
+            <span className="material-icons side-icon index-4"> logout </span>
+            <span className="index-4">LOGOUT</span>
           </li>
         </Link>
 
@@ -44,6 +44,7 @@ const Sidebar = () => {
           className="create-btn"
           onClick={() => setToggleModal((val) => !val)}
         >
+          <i class="fa-solid fa-feather-pointed"></i>
           CREATE NEW NOTE
         </button>
         {toggleModal ? <NoteModal toggleModal={setToggleModal} /> : null}

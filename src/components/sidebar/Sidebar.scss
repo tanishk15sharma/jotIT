@@ -3,11 +3,12 @@
   width: 400px;
   .sidebar-list {
     .sidebar-txt {
-      margin-bottom: 0.5rem;
+      margin-bottom: 1rem;
       display: flex;
       justify-content: baseline;
       align-items: center;
-      padding: 0.4rem 0rem;
+      padding: 0.5rem 0rem;
+      z-index: 4;
 
       // effect style
       position: relative;
@@ -17,40 +18,42 @@
         height: 100%;
         position: absolute;
         top: 0;
-        left: 3%;
-        opacity: 0.2;
+        left: 2.5%;
       }
 
       .side-icon {
         margin: 0 1rem;
-        // color: $green;
-        mix-blend-mode: difference;
+        color: $main-color;
       }
 
       &::before {
-        // color: $green;
         border-radius: 10px;
         width: 40px;
-        // background: $bg-secondary;
+        background: $action-color;
       }
       &:hover {
         &::before {
-          width: 130px;
+          width: 150px;
         }
       }
     }
   }
 }
 .create-btn {
+  color: $main-color;
   padding: 0.5rem 1rem;
-  width: 100%;
-  border: none;
-  // background-color: $green;
-  // color: $white;
+  margin-top: 1rem;
   cursor: pointer;
+  background-color: $action-color;
+  width: 100%;
   transition: all 0.3s;
-  font-weight: bolder;
+  border: none;
 }
+
 .create-btn:hover {
-  opacity: 0.8;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 2px 2px;
+  transform: translateY(-5px);
+}
+.create-btn:active {
+  background-color: $action-dark;
 }

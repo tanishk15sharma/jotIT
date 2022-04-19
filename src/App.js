@@ -8,7 +8,7 @@ function App() {
   return (
     <div>
       <Nav />
-      <div className="flex-spBt ">
+      <div className="flex-spBt main mg-p5">
         <Sidebar />
         <Routes>
           <Route path="/auth" element={<Auth />} />

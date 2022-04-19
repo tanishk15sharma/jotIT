@@ -1,10 +1,10 @@
 import React from "react";
-import "./Search.scss";
+
 const Search = () => {
   return (
-    <div className="search-container">
-      <i className="fa-solid fa-magnifying-glass font-lg"></i>
-      <input placeholder="Search" className="reset-input_xl w80" />
+    <div className="search-container w80 flex-center mg-auto mg-top-1 border-bottom">
+      <i className="fa-solid fa-magnifying-glass "></i>
+      <input placeholder="Search" className="reset-input_xl w80 mg-left-p3" />
     </div>
   );
 };

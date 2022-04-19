@@ -5,10 +5,9 @@
     .sidebar-txt {
       margin-bottom: 1rem;
       display: flex;
-      justify-content: baseline;
+
       align-items: center;
       padding: 0.5rem 0rem;
-      z-index: 4;
 
       // effect style
       position: relative;
@@ -48,10 +47,11 @@
   width: 100%;
   transition: all 0.3s;
   border: none;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 1px 2px;
 }
 
 .create-btn:hover {
-  box-shadow: rgba(0, 0, 0, 0.24) 0px 2px 2px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 3px;
   transform: translateY(-5px);
 }
 .create-btn:active {

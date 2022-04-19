@@ -11,14 +11,14 @@ const NotesListing = () => {
 
   console.log(pinnedNotes);
   return (
-    <div className="pd-1">
+    <div className="pd-1 main-con">
       {!notes.length ? (
         <img src={noteImg} className="note-img dim-5" />
       ) : (
         <>
           {pinnedNotes.length !== 0 && (
             <>
-              <h5 className="mg-left-8 dim-5">PINNED</h5>
+              <h5 className="mg-auto w70 dim-5">PINNED</h5>
               {pinnedNotes.map((note) => (
                 <NoteCard note={note} key={note._id} />
               ))}
@@ -26,7 +26,7 @@ const NotesListing = () => {
           )}
           {otherNotes.length !== 0 && (
             <>
-              <h5 className="mg-left-8 dim-5">OTHERS</h5>
+              <h5 className="mg-auto w70 dim-5">OTHERS</h5>
               {otherNotes.map((note) => (
                 <NoteCard note={note} key={note._id} />
               ))}

@@ -44,7 +44,7 @@ const NoteCard = ({ note }) => {
           </span>
           {note.title}
         </h3>
-        <button onClick={togglePin} className="border-reset font-lg-m pointer">
+        <button onClick={togglePin} className="border-reset font-lg-m">
           {note.isPinned ? <BsPinAngleFill /> : <BsPinAngle />}
         </button>
       </div>
@@ -62,28 +62,28 @@ const NoteCard = ({ note }) => {
         <span className="font-sm"> {new Date(note.date).toDateString()} </span>
         <div>
           <button
-            className="border-reset"
+            className="border-reset card-icon-btn"
             onClick={() => setToggleModal((val) => !val)}
           >
-            <span className="material-icons icon">edit</span>
+            <span className="material-icons">edit</span>
           </button>
           {toggleModal && (
             <NoteModal toggleModal={setToggleModal} editId={note._id} />
           )}
           <button
-            className="border-reset"
+            className="border-reset card-icon-btn"
             onClick={() => addToArchives(note._id, note, setNotes, setArchives)}
           >
-            <span className="material-icons icon pointer">archive</span>
+            <span className="material-icons  ">archive</span>
           </button>
           <button
-            className="border-reset"
+            className="border-reset card-icon-btn"
             onClick={() => {
               setTrash((trashNotes) => [...trashNotes, note]);
               deleteNote(note._id, setNotes);
             }}
           >
-            <span className="material-icons icon">delete</span>
+            <span className="material-icons ">delete</span>
           </button>
         </div>
       </footer>

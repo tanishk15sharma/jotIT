@@ -94,7 +94,9 @@
 .mg-left-2 {
   margin-left: 2rem;
 }
-
+.mg-left-8 {
+  margin-left: 8.5rem;
+}
 .mg-rl-2 {
   margin-left: 2rem;
   margin-right: 2rem;
@@ -149,12 +151,16 @@
 .w50 {
   width: 50%;
 }
+.w60 {
+  width: 60%;
+}
 .w70 {
   width: 70%;
 }
 .w80 {
   width: 80%;
 }
+
 .w100 {
   width: 100%;
 }
@@ -227,4 +233,7 @@
 }
 .index-4 {
   z-index: 4;
+}
+.dim-5 {
+  opacity: 0.5;
 }

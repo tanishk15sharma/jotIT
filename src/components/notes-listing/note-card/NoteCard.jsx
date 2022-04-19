@@ -34,7 +34,10 @@ const NoteCard = ({ note }) => {
   return (
     <section className={`mg-bottom-1  bg-${colors[note.color]}`}>
       <div className="flex-spBt pd-top-1">
-        <h3 className="w50 mg-bottom-1"> {note.title} </h3>
+        <h3 className="w50 mg-bottom-1">
+          <span className="font-lg icon-hash">#</span>
+          {note.title}
+        </h3>
         <button onClick={togglePin} className="border-reset font-lg-m pointer">
           {note.isPinned ? <BsPinAngleFill /> : <BsPinAngle />}
         </button>

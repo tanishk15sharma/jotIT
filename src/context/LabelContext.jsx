@@ -3,7 +3,7 @@ import { createContext, useContext, useState } from "react";
 const LabelContext = createContext(null);
 
 const LabelProvider = ({ children }) => {
-  const [labels, setLabels] = useState(["car", "bike"]);
+  const [labels, setLabels] = useState(["Work", "Goals", "Travel"]);
   return (
     <LabelContext.Provider value={{ labels, setLabels }}>
       {children}

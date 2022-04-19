@@ -11,19 +11,34 @@
   z-index: 4;
   .note-modal {
     width: 40%;
-  }
+    overflow: hidden;
+    position: relative;
 
-  .modal-footer {
-    padding: 0.5rem;
-    display: flex;
-    justify-content: end;
-    align-items: baseline;
+    .modal-footer {
+      padding: 0.5rem;
+      display: flex;
+      justify-content: end;
+      align-items: baseline;
+    }
+    .labelTag {
+      margin-right: 10px;
+      padding: 0 0.7rem;
+      background-color: $secondary-color;
+      opacity: 0.7;
+      border-radius: 5px;
+    }
+    .note-priority {
+      position: absolute;
+      transform: rotate(-38deg);
+      font-size: 10px;
+      top: 3%;
+      width: 70px;
+      left: -3%;
+      text-align: center;
+      background-color: rgb(175, 154, 154);
+    }
   }
-  .labelTag {
-    margin-right: 10px;
-    padding: 0 0.7rem;
-    background-color: $secondary-color;
-    opacity: 0.7;
-    border-radius: 5px;
-  }
+}
+.icon-hash {
+  opacity: 0.2;
 }

@@ -9,6 +9,7 @@ import { IoColorPaletteOutline } from "react-icons/io5";
 import { MdLabelOutline } from "react-icons/md";
 import { BsPinAngle } from "react-icons/bs";
 import { BsPinAngleFill } from "react-icons/bs";
+
 import "./NoteModal.scss";
 const NoteModal = ({ toggleModal, editId }) => {
   const { notes, setNotes } = useNotes();
@@ -37,29 +38,23 @@ const NoteModal = ({ toggleModal, editId }) => {
         className={`note-modal bg-${colors[noteDetails.color]}`}
         onClick={(e) => e.stopPropagation()}
       >
+        <div className="note-priority"> {noteDetails.priority} </div>
         <div className="mg-1 flex-spBt-center">
-          <input
-            placeholder="Title"
-            className="reset-input_xl bg-none"
-            value={noteDetails.title || ""}
-            onChange={(e) =>
-              setNoteDetails((details) => ({
-                ...details,
-                title: e.target.value,
-              }))
-            }
-          />
-          {/* <span
-            className="material-icons  rotate-left pointer"
-            onClick={() =>
-              setNoteDetails((details) => ({
-                ...details,
-                isPinned: !details.isPinned,
-              }))
-            }
-          >
-            push_pin
-          </span> */}
+          <label htmlFor="title">
+            <span className="font-xl icon-hash">#</span>
+            <input
+              placeholder="Title"
+              id="title"
+              className="reset-input_xl bg-none"
+              value={noteDetails.title || ""}
+              onChange={(e) =>
+                setNoteDetails((details) => ({
+                  ...details,
+                  title: e.target.value,
+                }))
+              }
+            />
+          </label>
           <button
             onClick={() =>
               setNoteDetails((details) => ({
@@ -75,13 +70,13 @@ const NoteModal = ({ toggleModal, editId }) => {
         <ReactQuill
           theme="snow"
           value={noteDetails.body || ""}
-          className="mg-1"
+          className="mg-1 flow-auto"
           onChange={(value) =>
             setNoteDetails((details) => ({ ...details, body: value }))
           }
           modules={NoteModal.modules}
           formats={NoteModal.formats}
-          placeholder="Write something........"
+          placeholder="Write something........!"
         />
         <div className="mg-1">
           {noteDetails.tags.map((labelTag, index) => (

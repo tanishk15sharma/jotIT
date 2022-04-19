@@ -35,8 +35,8 @@ const Sidebar = () => {
 
         <Link to="/">
           <li className="sidebar-txt">
-            <span className="material-icons side-icon"> account_circle </span>
-            PROFILE
+            <span className="material-icons side-icon"> logout </span>
+            LOGOUT
           </li>
         </Link>
 

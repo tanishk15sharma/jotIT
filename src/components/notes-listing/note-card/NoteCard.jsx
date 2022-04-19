@@ -15,7 +15,7 @@ const NoteCard = ({ note }) => {
   const { setTrash } = useTrash();
   const { setNotes } = useNotes();
   const { setArchives } = useArchive();
-  const { _id, color } = note;
+  const { _id } = note;
 
   useEffect(() => {
     if (bodyRef.current) {

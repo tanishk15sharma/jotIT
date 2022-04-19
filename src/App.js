@@ -6,7 +6,7 @@ import { Sidebar } from "./components/sidebar/Sidebar";
 import Auth from "./components/auth/Auth";
 function App() {
   return (
-    <div className="mg-tb-2 mg-rl-5">
+    <div>
       <Nav />
       <div className="flex-spBt ">
         <Sidebar />

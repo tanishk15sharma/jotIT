@@ -23,15 +23,15 @@
 
       .side-icon {
         margin: 0 1rem;
-        color: $green;
+        // color: $green;
         mix-blend-mode: difference;
       }
 
       &::before {
-        color: $green;
+        // color: $green;
         border-radius: 10px;
         width: 40px;
-        background: $bg-secondary;
+        // background: $bg-secondary;
       }
       &:hover {
         &::before {
@@ -45,8 +45,8 @@
   padding: 0.5rem 1rem;
   width: 100%;
   border: none;
-  background-color: $green;
-  color: $white;
+  // background-color: $green;
+  // color: $white;
   cursor: pointer;
   transition: all 0.3s;
   font-weight: bolder;

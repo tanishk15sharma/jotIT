@@ -1,5 +1,24 @@
 @import "../../variables";
+@import url("https://fonts.googleapis.com/css2?family=Fredoka+One&family=Rubik:wght@400;@500;600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Fredoka+One&family=Square+Peg&display=swap");
 nav {
-  background-color: $secondary-color;
-  padding: 0.5rem;
+  padding: 0.2rem 1.2rem;
+  border-bottom: 1px solid $main-color;
+  .title {
+    font-size: 2rem;
+    font-family: "Rubik", sans-serif;
+    font-weight: 400;
+  }
+  .sub-title {
+    font-size: 5rem;
+    font-weight: 900;
+    line-height: 0.7em;
+    font-family: "Square Peg", cursive;
+    color: $action-color;
+  }
+  .title-icon {
+    position: absolute;
+    top: 7%;
+    color: $action-color;
+  }
 }

@@ -1,4 +1,13 @@
 .main {
-  // border: 2px solid red;
   margin: 1rem 2rem;
+}
+@media (max-width: 400px) {
+  .main {
+    margin: 1rem;
+  }
+}
+@media (max-width: 360px) {
+  .main {
+    margin: 0.4rem;
+  }
 }

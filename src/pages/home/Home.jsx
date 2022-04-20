@@ -1,10 +1,10 @@
 import React from "react";
 import { NotesListing } from "../../components/notes-listing/NotesListing";
 import { Search } from "../../components/search/Search";
-
+import "./Home.scss";
 const Home = () => {
   return (
-    <div className="w80">
+    <div className="notes-container">
       <Search />
       <NotesListing />
     </div>

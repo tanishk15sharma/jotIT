@@ -2,7 +2,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Fredoka+One&family=Rubik:wght@400;@500;600&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Fredoka+One&family=Square+Peg&display=swap");
 nav {
-  padding: 0.2rem 1.2rem;
+  padding: 0.2rem 2.6rem;
   border-bottom: 1px solid $main-color;
   .title {
     font-size: 2rem;
@@ -20,5 +20,22 @@ nav {
     position: absolute;
     top: 7%;
     color: $main-color;
+  }
+}
+.hamburger {
+  border: none;
+  background: transparent;
+}
+@media (max-width: 420px) {
+  nav {
+    padding: 0.2rem 1rem;
+    .sub-title {
+      font-size: 4rem;
+    }
+  }
+}
+@media (max-width: 365px) {
+  nav {
+    padding: 0.2rem 0.4rem;
   }
 }

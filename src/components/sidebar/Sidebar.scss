@@ -1,11 +1,10 @@
 @import "../../variables";
 .sidebar {
-  width: 400px;
+  width: 35%;
   .sidebar-list {
     .sidebar-txt {
       margin-bottom: 1rem;
       display: flex;
-
       align-items: center;
       padding: 0.5rem 0rem;
 
@@ -56,4 +55,12 @@
 }
 .create-btn:active {
   background-color: $action-dark;
+}
+@media (max-width: 800px) {
+  .sidebar {
+    border: 2px solid red;
+    display: none;
+  }
+}
+@media (max-width: 660px) {
 }

@@ -5,7 +5,7 @@ section {
   min-height: 8rem;
   padding: 0rem 1rem;
   padding-right: 2rem;
-  width: 70%;
+  width: 74%;
   margin: 0 auto;
   position: relative;
   border-radius: 10px;
@@ -87,4 +87,21 @@ section:hover .note-priority {
   opacity: 0;
   transition: all 0.2s;
   background-color: $green;
+}
+@media (max-width: 1160px) {
+  section {
+    width: 80%;
+  }
+}
+
+@media (max-width: 1000px) {
+  section {
+    width: 94%;
+  }
+}
+
+@media (max-width: 900px) {
+  section {
+    width: 100%;
+  }
 }

@@ -11,6 +11,7 @@ import { BsPinAngle } from "react-icons/bs";
 import { BsPinAngleFill } from "react-icons/bs";
 
 import "./NoteModal.scss";
+import { Tooltip } from "../tooltip/Tooltip";
 const NoteModal = ({ toggleModal, editId }) => {
   const { notes, setNotes } = useNotes();
   const [toggleLableModal, setToggleLableModal] = useState(false);
@@ -66,7 +67,15 @@ const NoteModal = ({ toggleModal, editId }) => {
             }
             className="border-reset font-lg pointer"
           >
-            {noteDetails.isPinned ? <BsPinAngleFill /> : <BsPinAngle />}
+            {noteDetails.isPinned ? (
+              <Tooltip content="Unpin" direction="left">
+                <BsPinAngleFill />
+              </Tooltip>
+            ) : (
+              <Tooltip content="Pin" direction="left">
+                <BsPinAngle />
+              </Tooltip>
+            )}
           </button>
         </div>
         <ReactQuill
@@ -88,39 +97,44 @@ const NoteModal = ({ toggleModal, editId }) => {
           ))}
         </div>
         <footer className="modal-footer mg-1 ">
-          <select
-            name="priority"
-            className="border-none pointer bg-none font-l"
-            onChange={(e) =>
-              setNoteDetails((details) => ({
-                ...details,
-                priority: e.target.value,
-              }))
-            }
-            value={noteDetails.priority}
-          >
-            <option value="medium">Medium</option>
-            <option value="high">High</option>
-            <option value="low">Low</option>
-          </select>
-
-          <button
-            className="border-reset  pd-rl-1 pointer font-lg  flex "
-            onClick={() => {
-              setNoteDetails((details) => ({
-                ...details,
-                color: details.color === 6 ? 0 : details.color + 1,
-              }));
-            }}
-          >
-            <IoColorPaletteOutline />
-          </button>
-          <button
-            className="border-reset  pointer font-lg flex "
-            onClick={() => setToggleLableModal((val) => !val)}
-          >
-            <MdLabelOutline />
-          </button>
+          <Tooltip content="Priority">
+            <select
+              name="priority"
+              className="border-none pointer bg-none font-l"
+              onChange={(e) =>
+                setNoteDetails((details) => ({
+                  ...details,
+                  priority: e.target.value,
+                }))
+              }
+              value={noteDetails.priority}
+            >
+              <option value="medium">Medium</option>
+              <option value="high">High</option>
+              <option value="low">Low</option>
+            </select>
+          </Tooltip>
+          <Tooltip content="Color">
+            <button
+              className="border-reset  pd-rl-1 pointer font-lg  flex "
+              onClick={() => {
+                setNoteDetails((details) => ({
+                  ...details,
+                  color: details.color === 6 ? 0 : details.color + 1,
+                }));
+              }}
+            >
+              <IoColorPaletteOutline />
+            </button>
+          </Tooltip>
+          <Tooltip content="Label">
+            <button
+              className="border-reset  pointer font-lg flex "
+              onClick={() => setToggleLableModal((val) => !val)}
+            >
+              <MdLabelOutline />
+            </button>
+          </Tooltip>
           {toggleLableModal && (
             <LabelModal
               noteDetails={noteDetails}

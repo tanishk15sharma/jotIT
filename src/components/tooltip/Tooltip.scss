@@ -18,6 +18,8 @@
     background: $main-color;
     font-size: 12px;
     line-height: 1;
+    font-weight: 400;
+    letter-spacing: 1px;
     z-index: 100;
     white-space: nowrap;
   }
@@ -68,7 +70,7 @@
 
 .Tooltip-Tip.left {
   left: auto;
-  right: calc(100% + var(--tooltip-margin));
+  right: calc(20% + var(--tooltip-margin));
   top: 50%;
   transform: translateX(0) translateY(-50%);
 }

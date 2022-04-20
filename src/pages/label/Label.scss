@@ -1,0 +1,13 @@
+@import "../../variables";
+.label-container {
+  border-bottom: 1px solid $main-color;
+  .rotate90 {
+    transform: rotate(-90deg);
+  }
+  .rotate-90 {
+    transform: rotate(90deg);
+  }
+  .delay {
+    transition: all 0.4s;
+  }
+}

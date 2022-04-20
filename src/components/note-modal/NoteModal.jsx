@@ -4,7 +4,7 @@ import "react-quill/dist/quill.snow.css";
 import { useNotes } from "../../context/NotesContext";
 import { addNote, editNote } from "../../utilities/allNotes-utils";
 import { colors } from "../../utilities/helper-utils";
-import { LabelModal } from "../label-modal/LabelModal";
+import { LabelModal } from "../label/LabelModal";
 import { IoColorPaletteOutline } from "react-icons/io5";
 import { MdLabelOutline } from "react-icons/md";
 import { BsPinAngle } from "react-icons/bs";
@@ -27,7 +27,6 @@ const NoteModal = ({ toggleModal, editId }) => {
   useEffect(() => {
     if (editId) {
       let selectedNote = notes.find((note) => note._id === editId);
-      console.log(selectedNote);
       setNoteDetails({ ...selectedNote });
     }
   }, [editId]);

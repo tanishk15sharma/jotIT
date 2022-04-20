@@ -9,9 +9,8 @@ const NotesListing = () => {
   const pinnedNotes = notes?.filter((note) => note.isPinned);
   const otherNotes = notes?.filter((note) => !note.isPinned);
 
-  console.log(pinnedNotes);
   return (
-    <div className="pd-1 main-con">
+    <div className="pd-1 ">
       {!notes.length ? (
         <div className="dim-6">
           <img src={noteImgBg} className="bg-img" />

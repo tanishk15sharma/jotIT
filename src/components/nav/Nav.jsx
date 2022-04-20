@@ -1,4 +1,5 @@
 import React from "react";
+import { Tooltip } from "../tooltip/Tooltip";
 import "./Nav.scss";
 const Nav = () => {
   return (

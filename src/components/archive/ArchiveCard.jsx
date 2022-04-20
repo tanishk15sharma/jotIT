@@ -4,6 +4,7 @@ import { useNotes } from "../../context/NotesContext";
 import { useTrash } from "../../context/TrashContext";
 import { deleteFromArchive, restoreNote } from "../../utilities/archives-utils";
 import { colors } from "../../utilities/helper-utils";
+import { Tooltip } from "../tooltip/Tooltip";
 const ArchiveCard = ({ note }) => {
   const { setArchives } = useArchive();
   const { setNotes } = useNotes();
@@ -38,25 +39,29 @@ const ArchiveCard = ({ note }) => {
         <span className="font-sm">{new Date(note.date).toDateString()}</span>
 
         <div>
-          <button className="border-reset pointer">
-            <span
-              className="material-icons icon"
-              onClick={() => restoreNote(note._id, setNotes, setArchives)}
-            >
-              unarchive
-            </span>
-          </button>
-          <button className="border-reset pointer mg-left-p5">
-            <span
-              className="material-icons icon"
-              onClick={() => {
-                deleteFromArchive(note._id, setArchives);
-                setTrash((trashNotes) => [...trashNotes, note]);
-              }}
-            >
-              delete
-            </span>
-          </button>
+          <Tooltip content="Unarchive">
+            <button className="border-reset pointer">
+              <span
+                className="material-icons icon"
+                onClick={() => restoreNote(note._id, setNotes, setArchives)}
+              >
+                unarchive
+              </span>
+            </button>
+          </Tooltip>
+          <Tooltip content="Delete">
+            <button className="border-reset pointer mg-left-p5">
+              <span
+                className="material-icons icon"
+                onClick={() => {
+                  deleteFromArchive(note._id, setArchives);
+                  setTrash((trashNotes) => [...trashNotes, note]);
+                }}
+              >
+                delete
+              </span>
+            </button>
+          </Tooltip>
         </div>
       </footer>
     </section>

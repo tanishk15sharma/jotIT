@@ -8,6 +8,7 @@ import { colors } from "../../../utilities/helper-utils";
 import { NoteModal } from "../../note-modal/NoteModal";
 import { BsPinAngle } from "react-icons/bs";
 import { BsPinAngleFill } from "react-icons/bs";
+import { Tooltip } from "../../tooltip/Tooltip";
 import "./NoteCard.scss";
 const NoteCard = ({ note }) => {
   const bodyRef = useRef(null);
@@ -43,13 +44,23 @@ const NoteCard = ({ note }) => {
       </span>
       <div className="flex-spBt pd-top-1">
         <h3 className="w50 mg-bottom-1">
-          <span className="font-xl icon-hash pointer" onClick={copyLink}>
-            #
-          </span>
+          <Tooltip content="Copy Title" direction="left">
+            <span className="font-xl icon-hash pointer" onClick={copyLink}>
+              #
+            </span>
+          </Tooltip>
           {note.title}
         </h3>
         <button onClick={togglePin} className="border-reset font-lg pointer">
-          {note.isPinned ? <BsPinAngleFill /> : <BsPinAngle />}
+          {note.isPinned ? (
+            <Tooltip content="Unpin">
+              <BsPinAngleFill />
+            </Tooltip>
+          ) : (
+            <Tooltip content="Pin">
+              <BsPinAngle />
+            </Tooltip>
+          )}
         </button>
       </div>
       <p ref={bodyRef} className="w100">
@@ -65,30 +76,38 @@ const NoteCard = ({ note }) => {
       <footer className="note-footer">
         <span className="font-sm"> {new Date(note.date).toDateString()} </span>
         <div>
-          <button
-            className="border-reset card-icon-btn"
-            onClick={() => setToggleModal((val) => !val)}
-          >
-            <span className="material-icons">edit</span>
-          </button>
+          <Tooltip content="Edit">
+            <button
+              className="border-reset card-icon-btn"
+              onClick={() => setToggleModal((val) => !val)}
+            >
+              <span className="material-icons">edit</span>
+            </button>
+          </Tooltip>
           {toggleModal && (
             <NoteModal toggleModal={setToggleModal} editId={note._id} />
           )}
-          <button
-            className="border-reset card-icon-btn"
-            onClick={() => addToArchives(note._id, note, setNotes, setArchives)}
-          >
-            <span className="material-icons  ">archive</span>
-          </button>
-          <button
-            className="border-reset card-icon-btn"
-            onClick={() => {
-              setTrash((trashNotes) => [...trashNotes, note]);
-              deleteNote(note._id, setNotes);
-            }}
-          >
-            <span className="material-icons ">delete</span>
-          </button>
+          <Tooltip content="Archive">
+            <button
+              className="border-reset card-icon-btn"
+              onClick={() =>
+                addToArchives(note._id, note, setNotes, setArchives)
+              }
+            >
+              <span className="material-icons  ">archive</span>
+            </button>
+          </Tooltip>
+          <Tooltip content="Delete">
+            <button
+              className="border-reset card-icon-btn"
+              onClick={() => {
+                setTrash((trashNotes) => [...trashNotes, note]);
+                deleteNote(note._id, setNotes);
+              }}
+            >
+              <span className="material-icons ">delete</span>
+            </button>
+          </Tooltip>
         </div>
       </footer>
     </section>

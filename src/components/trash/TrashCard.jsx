@@ -4,6 +4,7 @@ import { useTrash } from "../../context/TrashContext";
 import { addNote } from "../../utilities/allNotes-utils";
 import { deleteTrashNote } from "../../utilities/trash-utils";
 import { colors } from "../../utilities/helper-utils";
+import { Tooltip } from "../tooltip/Tooltip";
 const TrashCard = ({ note }) => {
   const { setNotes } = useNotes();
   const { setTrash } = useTrash();
@@ -36,25 +37,29 @@ const TrashCard = ({ note }) => {
       <footer className="note-footer">
         <span className="font-sm"> {new Date(note.date).toDateString()} </span>
         <div>
-          <button className="border-reset pointer">
-            <span
-              className="material-icons icon"
-              onClick={() => {
-                addNote(note, setNotes);
-                deleteTrashNote(note._id, setTrash);
-              }}
-            >
-              restore_from_trash
-            </span>
-          </button>
-          <button className="border-reset pointer mg-left-p5">
-            <span
-              className="material-icons icon"
-              onClick={() => deleteTrashNote(note._id, setTrash)}
-            >
-              delete
-            </span>
-          </button>
+          <Tooltip content="Restore note">
+            <button className="border-reset pointer">
+              <span
+                className="material-icons icon"
+                onClick={() => {
+                  addNote(note, setNotes);
+                  deleteTrashNote(note._id, setTrash);
+                }}
+              >
+                restore_from_trash
+              </span>
+            </button>
+          </Tooltip>
+          <Tooltip content="Delete permanently">
+            <button className="border-reset pointer mg-left-p5">
+              <span
+                className="material-icons icon"
+                onClick={() => deleteTrashNote(note._id, setTrash)}
+              >
+                delete
+              </span>
+            </button>
+          </Tooltip>
         </div>
       </footer>
     </section>

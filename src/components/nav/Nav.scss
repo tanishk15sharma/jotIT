@@ -4,6 +4,9 @@
 nav {
   padding: 0.2rem 2.6rem;
   border-bottom: 1px solid $main-color;
+  position: sticky;
+  top: 0;
+
   .title {
     font-size: 2rem;
     font-family: "Rubik", sans-serif;

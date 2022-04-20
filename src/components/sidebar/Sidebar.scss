@@ -1,5 +1,9 @@
 @import "../../variables";
 .sidebar {
+  position: sticky;
+  align-self: flex-start;
+  top: 5rem;
+  z-index: 2;
   width: 35%;
   .sidebar-list {
     .sidebar-txt {

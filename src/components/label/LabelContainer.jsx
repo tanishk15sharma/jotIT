@@ -14,7 +14,9 @@ const LabelContainer = ({ label }) => {
       >
         <h2>{label}</h2>
         <MdOutlineArrowBackIosNew
-          className={`${toggleLabelBox ? "rotate-90" : "rotate90"} delay`}
+          className={`${
+            toggleLabelBox ? "rotate-90" : "rotate90"
+          } delay font-lg`}
         />
       </div>
       {toggleLabelBox &&

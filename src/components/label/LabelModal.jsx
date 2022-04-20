@@ -49,7 +49,7 @@ const LabelModal = ({ setNoteDetails, noteDetails }) => {
           add
         </span>
       </div>
-      <div className="flex-cl">
+      <div className="flex-cl labels-list">
         {labels.map((option, index) => (
           <label key={index} htmlFor={option} className="flex-center">
             <input

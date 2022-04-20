@@ -2,6 +2,10 @@
 .labelModal {
   position: fixed;
   right: 28%;
-  bottom: 19%;
+  bottom: 17%;
   background-color: $white;
+  .labels-list {
+    overflow-y: auto;
+    max-height: 4.7rem;
+  }
 }

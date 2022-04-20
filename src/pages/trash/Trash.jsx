@@ -12,7 +12,7 @@ const Trash = () => {
       </h3>
       {trash.length === 0 ? (
         <div className="dim-6">
-          <img src={deleteImgBg} className="bg-img" />
+          <img src={deleteImgBg} className="bg-img" alt="trash bg image" />
           <h2 className="txt-center">No Jot's in Recycle Bin!</h2>
         </div>
       ) : (

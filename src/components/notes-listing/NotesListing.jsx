@@ -13,7 +13,7 @@ const NotesListing = () => {
     <div className="pd-1 ">
       {!notes.length ? (
         <div className="dim-6">
-          <img src={noteImgBg} className="bg-img" />
+          <img src={noteImgBg} className="bg-img" alt="notes bg image" />
           <h2 className="txt-center">Add your Jot's !</h2>
         </div>
       ) : (

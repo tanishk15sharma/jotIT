@@ -12,6 +12,7 @@ import { BsPinAngleFill } from "react-icons/bs";
 
 import "./NoteModal.scss";
 import { Tooltip } from "../tooltip/Tooltip";
+import toast from "react-hot-toast";
 const NoteModal = ({ toggleModal, editId }) => {
   const { notes, setNotes } = useNotes();
   const [toggleLableModal, setToggleLableModal] = useState(false);
@@ -59,12 +60,13 @@ const NoteModal = ({ toggleModal, editId }) => {
             />
           </label>
           <button
-            onClick={() =>
+            onClick={() => {
               setNoteDetails((details) => ({
                 ...details,
                 isPinned: !details.isPinned,
-              }))
-            }
+              }));
+              toast.success("Updated!");
+            }}
             className="border-reset font-lg pointer"
           >
             {noteDetails.isPinned ? (

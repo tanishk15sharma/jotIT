@@ -1,0 +1,24 @@
+@import "../../variables";
+.mobile-nav {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  align-items: flex-end;
+  width: 100vw;
+  z-index: 9;
+  .mobile-icons {
+    padding: 0.4rem 2rem;
+    justify-content: space-evenly;
+    background-color: $action-color;
+    .mobile-icon {
+      line-height: 2px;
+      border-radius: 50%;
+      padding: 2px;
+    }
+  }
+}
+@media (max-width: 800px) {
+  .mobile-nav {
+    display: block;
+  }
+}

@@ -252,6 +252,9 @@
 .underline {
   text-decoration: underline;
 }
+.main-color {
+  color: $main-color;
+}
 @media (max-width: 420px) {
   .pd-1 {
     padding: 1rem 0rem;

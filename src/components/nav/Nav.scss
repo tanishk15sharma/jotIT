@@ -1,12 +1,14 @@
 @import "../../variables";
 @import url("https://fonts.googleapis.com/css2?family=Fredoka+One&family=Rubik:wght@400;@500;600&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Fredoka+One&family=Square+Peg&display=swap");
-nav {
+.nav {
   padding: 0.2rem 2.6rem;
   border-bottom: 1px solid $main-color;
   position: sticky;
   top: 0;
-
+  .show-side {
+    display: block !important;
+  }
   .title {
     font-size: 2rem;
     font-family: "Rubik", sans-serif;
@@ -25,12 +27,12 @@ nav {
     color: $main-color;
   }
 }
-.hamburger {
-  border: none;
-  background: transparent;
+.mobile-btn {
+  display: none;
 }
+
 @media (max-width: 420px) {
-  nav {
+  .nav {
     padding: 0.2rem 1rem;
     .sub-title {
       font-size: 4rem;
@@ -38,7 +40,12 @@ nav {
   }
 }
 @media (max-width: 365px) {
-  nav {
+  .nav {
     padding: 0.2rem 0.4rem;
+  }
+}
+@media (max-width: 800px) {
+  .mobile-btn {
+    display: inline-block;
   }
 }

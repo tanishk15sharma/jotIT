@@ -4,10 +4,13 @@ import { Archive, Home, Label, Trash } from "./pages";
 import { Nav } from "./components/nav/Nav";
 import { Sidebar } from "./components/sidebar/Sidebar";
 import Auth from "./components/auth/Auth";
+
 import { MobileNav } from "./components/mobile-nav/MobileNav";
+import { Toast } from "./components/toast/Toast";
 function App() {
   return (
     <div>
+      <Toast />
       <Nav />
       <MobileNav />
       <div className="flex-spBt main mg-p5">

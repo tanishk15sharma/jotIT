@@ -1,15 +1,31 @@
-import React, { useState, useEffect } from "react";
-import "./Toast.scss";
+import React from "react";
+import { Toaster } from "react-hot-toast";
+
 const Toast = () => {
-  const [show, setShow] = useState("show");
-
-  useEffect(() => {
-    setTimeout(() => {
-      setShow("");
-    }, 2000);
-  }, []);
-
-  return show && <div className={`snackbar-center ${show}`}>Toast</div>;
+  return (
+    <Toaster
+      position="bottom-left"
+      reverseOrder={false}
+      gutter={8}
+      containerClassName=""
+      containerStyle={{}}
+      toastOptions={{
+        className: "",
+        duration: 3000,
+        style: {
+          background: "#363636",
+          color: "#fff",
+        },
+        success: {
+          duration: 2000,
+          theme: {
+            primary: "green",
+            secondary: "black",
+          },
+        },
+      }}
+    />
+  );
 };
 
 export { Toast };

@@ -1,6 +1,6 @@
 import axios from "axios";
 import { getToken } from "./helper-utils";
-
+import toast from "react-hot-toast";
 const getAllArchives = async () => {
   try {
     const { data, status } = await axios.get("/api/archives", {
@@ -16,6 +16,7 @@ const getAllArchives = async () => {
 };
 
 const addToArchives = async (id, note, setNotes, setArchives) => {
+  toast.success("Note Archived !");
   try {
     const { data, status } = await axios.post(
       `/api/notes/archives/${id}`,
@@ -32,10 +33,13 @@ const addToArchives = async (id, note, setNotes, setArchives) => {
     setArchives(data.archives);
   } catch (err) {
     console.log(err);
+    toast.error("Archive Failed !");
   }
 };
 
 const restoreNote = async (id, setNotes, setArchives) => {
+  toast.success("Note Unarchived !");
+
   try {
     const { data, status } = await axios.post(
       `/api/archives/restore/${id}`,
@@ -51,10 +55,12 @@ const restoreNote = async (id, setNotes, setArchives) => {
     setArchives(data.archives);
   } catch (err) {
     console.log(err.response);
+    toast.error("Failed !");
   }
 };
 
 const deleteFromArchive = async (id, setArchives) => {
+  toast.success("Note Delete successfully !");
   try {
     const { data, status } = await axios.delete(`/api/archives/delete/${id}`, {
       headers: {
@@ -65,6 +71,7 @@ const deleteFromArchive = async (id, setArchives) => {
     setArchives(data.archives);
   } catch (err) {
     console.log(err);
+    toast.error("Try again !");
   }
 };
 

@@ -10,6 +10,7 @@ import { BsPinAngle } from "react-icons/bs";
 import { BsPinAngleFill } from "react-icons/bs";
 import { Tooltip } from "../../tooltip/Tooltip";
 import "./NoteCard.scss";
+import toast from "react-hot-toast";
 const NoteCard = ({ note }) => {
   const bodyRef = useRef(null);
   const [toggleModal, setToggleModal] = useState(false);
@@ -30,6 +31,7 @@ const NoteCard = ({ note }) => {
         note._id === _id ? { ...note, isPinned: !note.isPinned } : note
       )
     );
+    toast.success("Updated");
   };
 
   const copyLink = () => {

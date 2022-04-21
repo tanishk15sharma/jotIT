@@ -5,6 +5,7 @@ import { addNote } from "../../utilities/allNotes-utils";
 import { deleteTrashNote } from "../../utilities/trash-utils";
 import { colors } from "../../utilities/helper-utils";
 import { Tooltip } from "../tooltip/Tooltip";
+import toast from "react-hot-toast";
 const TrashCard = ({ note }) => {
   const { setNotes } = useNotes();
   const { setTrash } = useTrash();
@@ -42,6 +43,7 @@ const TrashCard = ({ note }) => {
               <span
                 className="material-icons icon"
                 onClick={() => {
+                  toast.loading("Restoring!");
                   addNote(note, setNotes);
                   deleteTrashNote(note._id, setTrash);
                 }}

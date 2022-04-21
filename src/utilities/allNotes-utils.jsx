@@ -74,7 +74,7 @@ const deleteNote = async (id, setNotes) => {
       },
     });
     if (status !== 200) return;
-    toast.success("Note Delete successfully !");
+    toast.success("Note Trashed!");
     setNotes(data.notes);
   } catch (err) {
     console.log(err);

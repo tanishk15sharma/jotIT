@@ -5,7 +5,6 @@ import "./Filters.scss";
 const Filters = () => {
   const { labels } = useLabels();
   const { filtersState, filtersDispatch } = useFilters();
-  console.log(filtersState);
 
   return (
     <div className="filter-container">
@@ -72,7 +71,7 @@ const Filters = () => {
             filtersDispatch({ type: "LABEL", payload: e.target.value })
           }
         >
-          <option value="" disabled>
+          <option value="" selected disabled>
             Please select
           </option>
           {labels.map((option, index) => (

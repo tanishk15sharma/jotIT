@@ -15,7 +15,6 @@ const NotesListing = () => {
 
   const sortedNotes = getSortedNotes(notes, sortBy);
   const filteredNotes = getFilteredNotes(sortedNotes, priority, label);
-  console.log("filtered", filteredNotes);
 
   const pinnedNotes = filteredNotes?.filter((note) => note.isPinned);
   const otherNotes = filteredNotes?.filter((note) => !note.isPinned);

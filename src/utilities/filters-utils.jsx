@@ -8,10 +8,11 @@ const getSortedNotes = (notes, sortBy) => {
 };
 
 const getFilteredNotes = (sortedNotes, priority, label) => {
-  if (priority === "All") return sortedNotes;
-  return sortedNotes.filter(
-    (note) => note.priority.toLowerCase() === priority.toLowerCase()
-  );
+  return sortedNotes
+    .filter((note) =>
+      priority ? note.priority.toLowerCase() === priority.toLowerCase() : true
+    )
+    .filter((note) => (label ? note.tags.includes(label) : true));
 };
 
 export { getSortedNotes, getFilteredNotes };

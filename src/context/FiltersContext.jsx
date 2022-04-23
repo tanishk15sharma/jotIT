@@ -10,6 +10,12 @@ const filtersReducer = (state, action) => {
       return { ...state, priority: action.payload };
     case "LABEL":
       return { ...state, label: action.payload };
+    case "CLEAR_ALL":
+      return {
+        sortBy: "",
+        priority: "",
+        label: "",
+      };
     default:
       return state;
   }

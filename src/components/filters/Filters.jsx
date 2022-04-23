@@ -10,7 +10,10 @@ const Filters = () => {
     <div className="filter-container">
       <div className="flex-spBt">
         <h5 className="mg-bottom-05">SORT BY</h5>
-        <button className="border-reset">
+        <button
+          className="border-reset pointer"
+          onClick={() => filtersDispatch({ type: "CLEAR_ALL" })}
+        >
           <h5>CLEAR ALL</h5>
         </button>
       </div>

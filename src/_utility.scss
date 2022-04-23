@@ -5,6 +5,10 @@
   display: flex;
   align-items: center;
 }
+.flex-spBt {
+  display: flex;
+  justify-content: space-between;
+}
 
 .flex-spBt-center {
   display: flex;
@@ -58,7 +62,7 @@
 .mg-p5 {
   margin: 0.5rem;
 }
-.mg-left-p3 {
+.mg-left-03 {
   margin-left: 0.3rem;
 }
 .mg-1 {
@@ -67,7 +71,9 @@
 .mg-top0 {
   margin-top: 0rem;
 }
-
+.mg-bottom-05 {
+  margin-bottom: 0.5rem;
+}
 .mg-bottom-1 {
   margin-bottom: 1rem;
 }
@@ -189,6 +195,9 @@
 
 .reset-input:focus {
   outline: none;
+}
+select:focus {
+  outline: none !important;
 }
 
 .border-bottom {

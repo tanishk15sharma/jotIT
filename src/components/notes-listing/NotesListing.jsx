@@ -5,7 +5,6 @@ import { NoteCard } from "./note-card/NoteCard";
 import noteImgBg from "../../assets/note-img.svg";
 const NotesListing = () => {
   const { notes } = useNotes();
-
   const pinnedNotes = notes?.filter((note) => note.isPinned);
   const otherNotes = notes?.filter((note) => !note.isPinned);
 

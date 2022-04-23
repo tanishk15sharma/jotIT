@@ -1,10 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
+import { BsFilterSquareFill } from "react-icons/bs";
+import { Filters } from "../filters/Filters";
 
 const Search = () => {
+  const [showFilters, setShowFilters] = useState(false);
   return (
-    <div className="search-container w60 flex-center mg-auto mg-top-1 border-bottom">
-      <i className="fa-solid fa-magnifying-glass "></i>
-      <input placeholder="Search" className="reset-input_xl w80 mg-left-p3" />
+    <div className=" w60 mg-auto flex-spBt-end mg-top-1 border-bottom relative">
+      <input placeholder="Search" className="reset-input_xl w80 mg-left-03" />
+      <button
+        className="font-lg border-reset flex"
+        onClick={() => setShowFilters((val) => !val)}
+      >
+        <BsFilterSquareFill />
+      </button>
+      {showFilters ? <Filters /> : null}
     </div>
   );
 };

@@ -1,9 +1,28 @@
-import { createContext, useContext } from "react";
+import { createContext, useContext, useReducer } from "react";
 
 const FiltersContext = createContext(null);
 
+const filtersReducer = (state, action) => {
+  switch (action.type) {
+    case "SORT_BY":
+      return { ...state, sortBy: action.payload };
+    default:
+      return state;
+  }
+};
+
 const FiltersProvider = ({ children }) => {
-  return <FiltersContext.Provider>{children}</FiltersContext.Provider>;
+  const [filtersState, filtersDispatch] = useReducer(filtersReducer, {
+    sortBy: "",
+    priority: "",
+    label: "",
+  });
+  console.log(filtersState);
+  return (
+    <FiltersContext.Provider value={{ filtersState, filtersDispatch }}>
+      {children}
+    </FiltersContext.Provider>
+  );
 };
 const useFilters = () => useContext(FiltersContext);
 

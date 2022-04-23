@@ -1,23 +1,44 @@
 import React from "react";
+import { useFilters } from "../../context/FiltersContext";
 import { useLabels } from "../../context/LabelContext";
 import "./Filters.scss";
 const Filters = () => {
   const { labels } = useLabels();
+  const { filtersState, filtersDispatch } = useFilters();
+  console.log(filtersState);
 
   return (
     <div className="filter-container">
       <div className="flex-spBt">
         <h5 className="mg-bottom-05">SORT BY</h5>
-        <h5>CLEAR ALL</h5>
+        <button className="border-reset">
+          <h5>CLEAR ALL</h5>
+        </button>
       </div>
       <div className="font-sm mg-bottom-05 ">
-        <input id="latestDate" type="radio" name="date" />
+        <input
+          id="latestDate"
+          type="radio"
+          name="date"
+          value="latestDate"
+          onChange={(e) =>
+            filtersDispatch({ type: "SORT_BY", payload: e.target.value })
+          }
+        />
         <label htmlFor="latestDate" className="mg-left-03">
           Latest Note
         </label>
       </div>
       <div className="font-sm mg-bottom-05 ">
-        <input id="oldestDate" type="radio" name="date" />
+        <input
+          id="oldestDate"
+          type="radio"
+          name="date"
+          value="oldestDate"
+          onChange={(e) =>
+            filtersDispatch({ type: "SORT_BY", payload: e.target.value })
+          }
+        />
         <label htmlFor="oldestDate" className="mg-left-03">
           Oldest Note
         </label>

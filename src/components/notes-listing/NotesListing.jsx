@@ -1,8 +1,8 @@
 import React from "react";
 import { useNotes } from "../../context/NotesContext";
-import { Toast } from "../toast/Toast";
 import { NoteCard } from "./note-card/NoteCard";
 import noteImgBg from "../../assets/note-img.svg";
+
 const NotesListing = () => {
   const { notes } = useNotes();
   const pinnedNotes = notes?.filter((note) => note.isPinned);

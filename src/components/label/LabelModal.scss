@@ -1,11 +1,17 @@
 @import "../../variables";
 .labelModal {
-  position: fixed;
-  right: 288px;
-  bottom: 57px;
+  position: absolute;
+  bottom: -44%;
+  right: -4%;
   background-color: $white;
+  box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;
   .labels-list {
     overflow-y: auto;
     max-height: 4.7rem;
+  }
+}
+@media (max-width: 580px) {
+  .labelModal {
+    right: 4%;
   }
 }

@@ -12,11 +12,17 @@
   .note-modal {
     width: 500px;
     margin: 0.5rem;
-    overflow-x: hidden;
+
     position: relative;
     margin-bottom: 6rem;
     box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px,
       rgba(0, 0, 0, 0.22) 0px 15px 12px;
+
+    .priorityBatch {
+      width: 70px;
+      height: 50px;
+      overflow: hidden;
+    }
     .modal-footer {
       display: flex;
       justify-content: end;
@@ -32,9 +38,9 @@
       position: absolute;
       transform: rotate(-38deg);
       font-size: 12px;
-      top: 3%;
-      width: 60px;
-      left: -2%;
+      top: 18%;
+      width: 70px;
+      left: -20%;
       opacity: 1;
       color: $white;
       text-align: center;

@@ -20,7 +20,7 @@ const NotesListing = () => {
         <>
           {pinnedNotes.length !== 0 && (
             <>
-              <h5 className="mg-auto w70 dim-5">PINNED</h5>
+              <h5 className=" w70 dim-5">PINNED</h5>
               {pinnedNotes.map((note) => (
                 <NoteCard note={note} key={note._id} />
               ))}
@@ -28,7 +28,7 @@ const NotesListing = () => {
           )}
           {otherNotes.length !== 0 && (
             <>
-              <h5 className="mg-auto w70 dim-5">OTHERS</h5>
+              <h5 className=" w70 dim-5">OTHERS</h5>
               {otherNotes.map((note) => (
                 <NoteCard note={note} key={note._id} />
               ))}

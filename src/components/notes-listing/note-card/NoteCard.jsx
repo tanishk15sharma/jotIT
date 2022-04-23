@@ -35,6 +35,7 @@ const NoteCard = ({ note }) => {
   };
 
   const copyLink = () => {
+    toast.success("Copied!");
     navigator.clipboard.writeText(note.title);
   };
 

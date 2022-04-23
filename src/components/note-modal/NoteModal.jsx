@@ -39,11 +39,12 @@ const NoteModal = ({ toggleModal, editId }) => {
         className={`note-modal bg-${colors[noteDetails.color]}`}
         onClick={(e) => e.stopPropagation()}
       >
-        <div className={`modal-priority  ${noteDetails.priority}`}>
-          {" "}
-          {noteDetails.priority}
+        <div className="relative priorityBatch">
+          <div className={`modal-priority  ${noteDetails.priority}`}>
+            {noteDetails.priority}
+          </div>
         </div>
-        <div className="mg-1 flex-spBt-center">
+        <div className="mg-1 mg-top0 flex-spBt-center">
           <label htmlFor="title">
             <span className="font-xl icon-hash">#</span>
             <input

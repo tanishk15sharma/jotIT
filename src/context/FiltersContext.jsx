@@ -6,6 +6,10 @@ const filtersReducer = (state, action) => {
   switch (action.type) {
     case "SORT_BY":
       return { ...state, sortBy: action.payload };
+    case "PRIORITY":
+      return { ...state, priority: action.payload };
+    case "LABEL":
+      return { ...state, label: action.payload };
     default:
       return state;
   }

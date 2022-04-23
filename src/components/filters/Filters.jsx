@@ -46,7 +46,14 @@ const Filters = () => {
 
       <div className="flex-spBt-end mg-bottom-1">
         <h5>PRIORITY</h5>
-        <select name="" id="" className="filters-select">
+        <select
+          name=""
+          id=""
+          className="filters-select"
+          onChange={(e) =>
+            filtersDispatch({ type: "PRIORITY", payload: e.target.value })
+          }
+        >
           <option value="high">HIGH</option>
           <option selected value="medium">
             MEDIUM
@@ -56,7 +63,14 @@ const Filters = () => {
       </div>
       <div className="flex-spBt-end mg-bottom-1">
         <h5>LABEL</h5>
-        <select name="labels" id="" className="filters-select">
+        <select
+          name="labels"
+          id=""
+          className="filters-select"
+          onChange={(e) =>
+            filtersDispatch({ type: "LABEL", payload: e.target.value })
+          }
+        >
           <option value="">Please select</option>
           {labels.map((option, index) => (
             <option key={index} value={option}>

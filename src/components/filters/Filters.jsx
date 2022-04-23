@@ -54,11 +54,12 @@ const Filters = () => {
             filtersDispatch({ type: "PRIORITY", payload: e.target.value })
           }
         >
-          <option value="high">HIGH</option>
-          <option selected value="medium">
-            MEDIUM
+          <option selected disabled>
+            All
           </option>
-          <option value="low">LOW</option>
+          <option value="high">High</option>
+          <option value="medium">Medium</option>
+          <option value="low">Low</option>
         </select>
       </div>
       <div className="flex-spBt-end mg-bottom-1">
@@ -71,7 +72,9 @@ const Filters = () => {
             filtersDispatch({ type: "LABEL", payload: e.target.value })
           }
         >
-          <option value="">Please select</option>
+          <option value="" disabled>
+            Please select
+          </option>
           {labels.map((option, index) => (
             <option key={index} value={option}>
               {option}

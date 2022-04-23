@@ -3,18 +3,21 @@ import { useNotes } from "../../context/NotesContext";
 import { NoteCard } from "./note-card/NoteCard";
 import noteImgBg from "../../assets/note-img.svg";
 import { useFilters } from "../../context/FiltersContext";
-import { getFilteredNotes } from "../../utilities/filters-utils";
+import {
+  getFilteredNotes,
+  getSortedNotes,
+} from "../../utilities/filters-utils";
 
 const NotesListing = () => {
   const { notes } = useNotes();
   const { filtersState } = useFilters();
   const { sortBy, priority, label } = filtersState;
-  const filteredNotes = getFilteredNotes(notes, sortBy, priority, label);
+  const sortedNotes = getSortedNotes(notes, sortBy, priority, label);
 
-  console.log("filtered", filteredNotes);
+  console.log("filtered", sortedNotes);
 
-  const pinnedNotes = notes?.filter((note) => note.isPinned);
-  const otherNotes = notes?.filter((note) => !note.isPinned);
+  const pinnedNotes = sortedNotes?.filter((note) => note.isPinned);
+  const otherNotes = sortedNotes?.filter((note) => !note.isPinned);
 
   return (
     <div className="pd-1 ">

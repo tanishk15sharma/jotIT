@@ -21,7 +21,7 @@ const FiltersProvider = ({ children }) => {
     priority: "",
     label: "",
   });
-  console.log(filtersState);
+
   return (
     <FiltersContext.Provider value={{ filtersState, filtersDispatch }}>
       {children}

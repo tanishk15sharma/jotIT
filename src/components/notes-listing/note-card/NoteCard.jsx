@@ -18,7 +18,7 @@ const NoteCard = ({ note }) => {
   const { setNotes } = useNotes();
   const { setArchives } = useArchive();
   const { _id } = note;
-
+  console.log(note);
   useEffect(() => {
     if (bodyRef.current) {
       bodyRef.current.innerHTML = note.body;

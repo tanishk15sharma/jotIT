@@ -18,7 +18,7 @@ const filtersReducer = (state, action) => {
 const FiltersProvider = ({ children }) => {
   const [filtersState, filtersDispatch] = useReducer(filtersReducer, {
     sortBy: "",
-    priority: "",
+    priority: "All",
     label: "",
   });
 

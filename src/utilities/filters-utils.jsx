@@ -1,4 +1,4 @@
-const getSortedNotes = (notes, sortBy, priority, label) => {
+const getSortedNotes = (notes, sortBy) => {
   if (sortBy === "") return notes;
   if (sortBy === "latestDate") {
     return [...notes].sort((a, b) => b.date - a.date);
@@ -7,4 +7,11 @@ const getSortedNotes = (notes, sortBy, priority, label) => {
   }
 };
 
-export { getSortedNotes };
+const getFilteredNotes = (sortedNotes, priority, label) => {
+  if (priority === "All") return sortedNotes;
+  return sortedNotes.filter(
+    (note) => note.priority.toLowerCase() === priority.toLowerCase()
+  );
+};
+
+export { getSortedNotes, getFilteredNotes };

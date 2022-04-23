@@ -12,12 +12,13 @@ const NotesListing = () => {
   const { notes } = useNotes();
   const { filtersState } = useFilters();
   const { sortBy, priority, label } = filtersState;
-  const sortedNotes = getSortedNotes(notes, sortBy, priority, label);
 
-  console.log("filtered", sortedNotes);
+  const sortedNotes = getSortedNotes(notes, sortBy);
+  const filteredNotes = getFilteredNotes(sortedNotes, priority, label);
+  console.log("filtered", filteredNotes);
 
-  const pinnedNotes = sortedNotes?.filter((note) => note.isPinned);
-  const otherNotes = sortedNotes?.filter((note) => !note.isPinned);
+  const pinnedNotes = filteredNotes?.filter((note) => note.isPinned);
+  const otherNotes = filteredNotes?.filter((note) => !note.isPinned);
 
   return (
     <div className="pd-1 ">

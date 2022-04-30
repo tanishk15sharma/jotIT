@@ -44,7 +44,7 @@ const Sidebar = () => {
           className="create-btn"
           onClick={() => setToggleModal((val) => !val)}
         >
-          <i class="fa-solid fa-feather-pointed"></i>
+          <i className="fa-solid fa-feather-pointed"></i>
           CREATE NEW NOTE
         </button>
         {toggleModal ? <NoteModal toggleModal={setToggleModal} /> : null}

@@ -5,13 +5,13 @@ import "./Nav.scss";
 
 const Nav = () => {
   const [showMenu, setShowMenu] = useState(false);
-  console.log(showMenu);
+
   return (
     <nav className="nav flex-spBt-end">
       <span className="relative">
         <span className="title">JOT</span>
         <span className="sub-title">it</span>
-        <i class="fa-solid fa-feather-pointed title-icon"></i>
+        <i className="fa-solid fa-feather-pointed title-icon"></i>
       </span>
       <div>
         <button className="border-reset mobile-btn">

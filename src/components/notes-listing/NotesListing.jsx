@@ -1,12 +1,23 @@
 import React from "react";
 import { useNotes } from "../../context/NotesContext";
-import { Toast } from "../toast/Toast";
 import { NoteCard } from "./note-card/NoteCard";
 import noteImgBg from "../../assets/note-img.svg";
+import { useFilters } from "../../context/FiltersContext";
+import {
+  getFilteredNotes,
+  getSortedNotes,
+} from "../../utilities/filters-utils";
+
 const NotesListing = () => {
   const { notes } = useNotes();
-  const pinnedNotes = notes?.filter((note) => note.isPinned);
-  const otherNotes = notes?.filter((note) => !note.isPinned);
+  const { filtersState } = useFilters();
+  const { sortBy, priority, label, search } = filtersState;
+
+  const sortedNotes = getSortedNotes(notes, sortBy);
+  const filteredNotes = getFilteredNotes(sortedNotes, priority, label, search);
+
+  const pinnedNotes = filteredNotes?.filter((note) => note.isPinned);
+  const otherNotes = filteredNotes?.filter((note) => !note.isPinned);
 
   return (
     <div className="pd-1 ">

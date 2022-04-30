@@ -11,10 +11,10 @@ import {
 const NotesListing = () => {
   const { notes } = useNotes();
   const { filtersState } = useFilters();
-  const { sortBy, priority, label } = filtersState;
+  const { sortBy, priority, label, search } = filtersState;
 
   const sortedNotes = getSortedNotes(notes, sortBy);
-  const filteredNotes = getFilteredNotes(sortedNotes, priority, label);
+  const filteredNotes = getFilteredNotes(sortedNotes, priority, label, search);
 
   const pinnedNotes = filteredNotes?.filter((note) => note.isPinned);
   const otherNotes = filteredNotes?.filter((note) => !note.isPinned);

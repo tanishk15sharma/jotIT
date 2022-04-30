@@ -4,6 +4,8 @@ const FiltersContext = createContext(null);
 
 const filtersReducer = (state, action) => {
   switch (action.type) {
+    case "SEARCH_NOTE":
+      return { ...state, search: action.payload };
     case "SORT_BY":
       return { ...state, sortBy: action.payload };
     case "PRIORITY":
@@ -15,6 +17,7 @@ const filtersReducer = (state, action) => {
         sortBy: "",
         priority: "",
         label: "",
+        search: "",
       };
     default:
       return state;
@@ -26,6 +29,7 @@ const FiltersProvider = ({ children }) => {
     sortBy: "",
     priority: "",
     label: "",
+    search: "",
   });
 
   return (

@@ -10,15 +10,15 @@ const getSortedNotes = (notes, sortBy) => {
 const getFilteredNotes = (sortedNotes, priority, label, search) => {
   const searchKey = search.toLowerCase();
   return sortedNotes
-    .filter(
+    ?.filter(
       (note) =>
         note.title.toLowerCase().includes(searchKey) ||
         note.body.toLowerCase().includes(searchKey)
     )
-    .filter((note) =>
+    ?.filter((note) =>
       priority ? note.priority.toLowerCase() === priority.toLowerCase() : true
     )
-    .filter((note) => (label ? note.tags.includes(label) : true));
+    ?.filter((note) => (label ? note.tags.includes(label) : true));
 };
 
 export { getSortedNotes, getFilteredNotes };

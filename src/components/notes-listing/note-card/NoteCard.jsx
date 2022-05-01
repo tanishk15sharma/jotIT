@@ -78,7 +78,7 @@ const NoteCard = ({ note }) => {
       </div>
       <footer className="note-footer">
         <span className="font-sm"> {new Date(note.date).toDateString()} </span>
-        <div>
+        <div className="note-options-div">
           <Tooltip content="Edit">
             <button
               className="border-reset card-icon-btn"

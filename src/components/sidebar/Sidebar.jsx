@@ -2,9 +2,17 @@ import React, { useState } from "react";
 import "./Sidebar.scss";
 import { Link } from "react-router-dom";
 import { NoteModal } from "../note-modal/NoteModal";
+import { useAuth } from "../../context/AuthContext";
 const Sidebar = () => {
   const [toggleModal, setToggleModal] = useState(false);
-
+  const { setAuth } = useAuth();
+  const logoutHandler = () => {
+    localStorage.removeItem("auth");
+    setAuth({
+      isLoggedIn: false,
+      encodedToken: "",
+    });
+  };
   return (
     <aside className="sidebar">
       <ul className="sidebar-list">
@@ -34,7 +42,7 @@ const Sidebar = () => {
         </Link>
 
         <Link to="/">
-          <li className="sidebar-txt">
+          <li className="sidebar-txt" onClick={logoutHandler}>
             <span className="material-icons side-icon index-4"> logout </span>
             <span className="index-4">LOGOUT</span>
           </li>

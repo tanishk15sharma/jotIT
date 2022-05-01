@@ -3,6 +3,7 @@ import { useNotes } from "../../context/NotesContext";
 import { NoteCard } from "../notes-listing/note-card/NoteCard";
 import { MdOutlineArrowBackIosNew } from "react-icons/md";
 import { Tooltip } from "../tooltip/Tooltip";
+import "./LabelModal.scss";
 const LabelContainer = ({ label }) => {
   const [toggleLabelBox, setToggleLabelBox] = useState(false);
   const { notes } = useNotes();
@@ -22,16 +23,18 @@ const LabelContainer = ({ label }) => {
           />
         </Tooltip>
       </div>
-      {toggleLabelBox &&
-        (notes.some((note) => note.tags.includes(label)) ? (
-          notes
-            .filter((note) => note.tags.includes(label))
-            .map((note) => <NoteCard note={note} key={note._id} />)
-        ) : (
-          <h5 className="mg-auto  dim-5 underline">
-            No Jot Available With This Label.
-          </h5>
-        ))}
+      <div className="label-box">
+        {toggleLabelBox &&
+          (notes.some((note) => note.tags.includes(label)) ? (
+            notes
+              .filter((note) => note.tags.includes(label))
+              .map((note) => <NoteCard note={note} key={note._id} />)
+          ) : (
+            <h5 className="mg-auto  dim-5 underline">
+              No Jot Available With This Label.
+            </h5>
+          ))}
+      </div>
     </div>
   );
 };

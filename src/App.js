@@ -7,7 +7,9 @@ import Auth from "./components/auth/Auth";
 
 import { MobileNav } from "./components/mobile-nav/MobileNav";
 import { Toast } from "./components/toast/Toast";
+import { useAuth } from "./context/AuthContext";
 function App() {
+  const { auth } = useAuth();
   return (
     <div>
       <Toast />
@@ -16,8 +18,7 @@ function App() {
       <div className="flex-spBt main mg-p5">
         <Sidebar />
         <Routes>
-          <Route path="/auth" element={<Auth />} />
-          <Route path="/" element={<Home />} />
+          <Route path="/" element={auth.isLoggedIn ? <Home /> : <Auth />} />
           <Route path="/label" element={<Label />} />
           <Route path="/archive" element={<Archive />} />
           <Route path="/trash" element={<Trash />} />

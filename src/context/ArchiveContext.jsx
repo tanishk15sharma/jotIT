@@ -1,16 +1,19 @@
 import { createContext, useContext, useState, useEffect } from "react";
 import { getAllArchives } from "../utilities/archives-utils";
+import { useAuth } from "./AuthContext";
 
 const ArchiveContext = createContext(null);
 
 const ArchiveProvider = ({ children }) => {
   const [archives, setArchives] = useState([]);
-
+  const { auth } = useAuth();
   useEffect(() => {
-    (async () => {
-      const setAllArchives = await getAllArchives();
-      setArchives(setAllArchives);
-    })();
+    if (auth.isLoggedIn) {
+      (async () => {
+        const setAllArchives = await getAllArchives();
+        setArchives(setAllArchives);
+      })();
+    }
   }, []);
   return (
     <ArchiveContext.Provider value={{ archives, setArchives }}>

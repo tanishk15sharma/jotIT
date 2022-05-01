@@ -39,6 +39,10 @@ section {
     padding: 0rem 0.5rem;
     cursor: pointer;
   }
+  .note-options-div {
+    transition: all 0.1s;
+    opacity: 0;
+  }
 }
 
 .tags-div {
@@ -74,6 +78,9 @@ section:hover .card-icon-btn {
 }
 section:hover .note-priority {
   opacity: 0.6;
+}
+section:hover .note-options-div {
+  opacity: 1;
 }
 .note-priority {
   position: absolute;

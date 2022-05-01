@@ -2,8 +2,11 @@ import axios from "axios";
 import React, { useState } from "react";
 import { useAuth } from "../../context/AuthContext";
 import { validSignUp } from "../../utilities/auth-utils";
+import loadingGif from "../../assets/loading.gif";
 
 const Signup = ({ toggleAuth }) => {
+  const [loading, setLoading] = useState(false);
+
   const { setAuth } = useAuth();
   const [signup, setSignup] = useState({
     firstName: "",
@@ -34,11 +37,13 @@ const Signup = ({ toggleAuth }) => {
   };
 
   const postSignUpData = async () => {
+    setLoading(true);
     try {
       const { data, status } = await axios.post("/api/auth/signup", signup);
       console.log(data);
       if (status !== 201) return;
       setAuth({ isLoggedIn: true, eocodedToken: data.encodedToken });
+      setLoading(false);
     } catch (err) {
       console.log(err.response);
     }
@@ -117,7 +122,13 @@ const Signup = ({ toggleAuth }) => {
         </span>
       )}
       <div className="mg-bottom-1_2"></div>
-      <button className="pd border-rg font-lg pointer">SIGN IN</button>
+      {loading ? (
+        <button className="pd border-rg font-lg pointer">
+          <img src={loadingGif} />
+        </button>
+      ) : (
+        <button className="pd border-rg font-lg pointer">SIGN IN</button>
+      )}
     </form>
   );
 };

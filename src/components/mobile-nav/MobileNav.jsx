@@ -25,7 +25,7 @@ const MobileNav = () => {
           className="border-reset main-color"
           onClick={() => setToggleModal((val) => !val)}
         >
-          <span class="material-icons">add_circle</span>
+          <span className="material-icons">add_circle</span>
         </button>
 
         <NavLink to="/archive" style={getActiveStyleBar}>

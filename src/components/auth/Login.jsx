@@ -42,11 +42,11 @@ const Login = ({ toggleAuth }) => {
         password,
       });
       if (status !== 200) return;
+      console.log(data, status);
       setAuth({ isLoggedIn: true, encodedToken: data.encodedToken });
       setLoading(false);
     } catch (err) {
       setLoading(false);
-
       console.log(err.response.data);
       setLoginErrors((loginErr) => ({
         ...loginErr,

@@ -3,9 +3,11 @@ import "./Sidebar.scss";
 import { Link } from "react-router-dom";
 import { NoteModal } from "../note-modal/NoteModal";
 import { useAuth } from "../../context/AuthContext";
+import { useNotes } from "../../context/NotesContext";
 const Sidebar = () => {
   const [toggleModal, setToggleModal] = useState(false);
   const { setAuth } = useAuth();
+  const { setNotes } = useNotes();
   const logoutHandler = () => {
     localStorage.removeItem("auth");
     setAuth({

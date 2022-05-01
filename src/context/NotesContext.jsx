@@ -9,13 +9,12 @@ const NotesProvider = ({ children }) => {
   const { auth } = useAuth();
 
   useEffect(() => {
-    if (auth.isLoggedIn) {
-      (async () => {
-        const allNotes = await getAllNotes();
-        setNotes(allNotes);
-      })();
-    }
-  }, []);
+    if (!auth.isLoggedIn) return;
+    (async () => {
+      const allNotes = await getAllNotes(auth.encodedToken);
+      setNotes(allNotes);
+    })();
+  }, [auth.isLoggedIn]);
 
   return (
     <NotesContext.Provider value={{ notes, setNotes }}>

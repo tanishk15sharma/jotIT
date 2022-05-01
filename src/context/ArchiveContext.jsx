@@ -8,13 +8,12 @@ const ArchiveProvider = ({ children }) => {
   const [archives, setArchives] = useState([]);
   const { auth } = useAuth();
   useEffect(() => {
-    if (auth.isLoggedIn) {
-      (async () => {
-        const setAllArchives = await getAllArchives();
-        setArchives(setAllArchives);
-      })();
-    }
-  }, []);
+    (async () => {
+      if (!auth.isLoggedIn) return;
+      const setAllArchives = await getAllArchives();
+      setArchives(setAllArchives);
+    })();
+  }, [auth.isLoggedIn]);
   return (
     <ArchiveContext.Provider value={{ archives, setArchives }}>
       {children}

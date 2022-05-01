@@ -2,13 +2,14 @@ import axios from "axios";
 import toast from "react-hot-toast";
 import { getToken } from "./helper-utils";
 
-const getAllNotes = async () => {
+const getAllNotes = async (token) => {
   try {
     const { data, status } = await axios.get("/api/notes", {
       headers: {
-        authorization: getToken(),
+        authorization: token,
       },
     });
+
     if (status !== 200) return;
     return data.notes;
   } catch (err) {
@@ -16,7 +17,7 @@ const getAllNotes = async () => {
   }
 };
 
-const addNote = async (note, setNotes) => {
+const addNote = async (note, setNotes, token) => {
   const toastId = toast.loading("Adding...");
   try {
     const { data, status } = await axios.post(
@@ -24,10 +25,11 @@ const addNote = async (note, setNotes) => {
       { note },
       {
         headers: {
-          authorization: getToken(),
+          authorization: token,
         },
       }
     );
+
     if (status !== 201) return;
     toast.success("Note added successfully !", {
       id: toastId,
@@ -41,7 +43,7 @@ const addNote = async (note, setNotes) => {
   }
 };
 
-const editNote = async (id, note, setNotes) => {
+const editNote = async (id, note, setNotes, token) => {
   const toastId = toast.loading("Updating...");
   try {
     const { data, status } = await axios.post(
@@ -49,7 +51,7 @@ const editNote = async (id, note, setNotes) => {
       { note },
       {
         headers: {
-          authorization: getToken(),
+          authorization: token,
         },
       }
     );
@@ -66,11 +68,11 @@ const editNote = async (id, note, setNotes) => {
   }
 };
 
-const deleteNote = async (id, setNotes) => {
+const deleteNote = async (id, setNotes, token) => {
   try {
     const { data, status } = await axios.delete(`/api/notes/${id}`, {
       headers: {
-        authorization: getToken(),
+        authorization: token,
       },
     });
     if (status !== 200) return;

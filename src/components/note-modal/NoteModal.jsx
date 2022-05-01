@@ -13,7 +13,9 @@ import { BsPinAngleFill } from "react-icons/bs";
 import "./NoteModal.scss";
 import { Tooltip } from "../tooltip/Tooltip";
 import toast from "react-hot-toast";
+import { useAuth } from "../../context/AuthContext";
 const NoteModal = ({ toggleModal, editId }) => {
+  const { auth } = useAuth();
   const { notes, setNotes } = useNotes();
   const [toggleLableModal, setToggleLableModal] = useState(false);
   const [noteDetails, setNoteDetails] = useState({
@@ -150,7 +152,7 @@ const NoteModal = ({ toggleModal, editId }) => {
               disabled={!noteDetails.title}
               className="border-reset mg-left-1 pointer font-l "
               onClick={() => {
-                addNote(noteDetails, setNotes);
+                addNote(noteDetails, setNotes, auth.encodedToken);
                 toggleModal(false);
               }}
             >
@@ -161,7 +163,7 @@ const NoteModal = ({ toggleModal, editId }) => {
               disabled={!noteDetails.title}
               className="border-reset mg-left-1 pointer font-l"
               onClick={() => {
-                editNote(editId, noteDetails, setNotes);
+                editNote(editId, noteDetails, setNotes, auth.encodedToken);
                 toggleModal(false);
               }}
             >

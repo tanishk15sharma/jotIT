@@ -2,6 +2,7 @@ import React, { useState, useRef, useEffect } from "react";
 import { useArchive } from "../../../context/ArchiveContext";
 import { useNotes } from "../../../context/NotesContext";
 import { useTrash } from "../../../context/TrashContext";
+import { useAuth } from "../../../context/AuthContext";
 import { deleteNote } from "../../../utilities/allNotes-utils";
 import { addToArchives } from "../../../utilities/archives-utils";
 import { colors } from "../../../utilities/helper-utils";
@@ -14,6 +15,7 @@ import toast from "react-hot-toast";
 const NoteCard = ({ note }) => {
   const bodyRef = useRef(null);
   const [toggleModal, setToggleModal] = useState(false);
+  const { auth } = useAuth();
   const { setTrash } = useTrash();
   const { setNotes } = useNotes();
   const { setArchives } = useArchive();
@@ -105,7 +107,7 @@ const NoteCard = ({ note }) => {
               className="border-reset card-icon-btn"
               onClick={() => {
                 setTrash((trashNotes) => [...trashNotes, note]);
-                deleteNote(note._id, setNotes);
+                deleteNote(note._id, setNotes, auth.encodedToken);
               }}
             >
               <span className="material-icons ">delete</span>

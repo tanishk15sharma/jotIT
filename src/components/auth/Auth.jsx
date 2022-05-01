@@ -7,11 +7,13 @@ const Auth = () => {
 
   return (
     <div className="fixed-container">
-      {toggleAuth ? (
-        <Login toggleAuth={setToggleAuth} />
-      ) : (
-        <Signup toggleAuth={setToggleAuth} />
-      )}
+      <div className="auth-box">
+        {toggleAuth ? (
+          <Login toggleAuth={setToggleAuth} />
+        ) : (
+          <Signup toggleAuth={setToggleAuth} />
+        )}
+      </div>
     </div>
   );
 };

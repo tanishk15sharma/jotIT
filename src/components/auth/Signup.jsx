@@ -49,7 +49,7 @@ const Signup = ({ toggleAuth }) => {
     <form className="flex-cl fixed-w30" onSubmit={handleSignUpSubmit}>
       <div className="border-bottom">
         <button
-          className=" w50 border-reset font-lg pd"
+          className=" w50 border-reset font-lg pd pointer"
           onClick={() => toggleAuth(true)}
           type="button"
         >
@@ -117,7 +117,7 @@ const Signup = ({ toggleAuth }) => {
         </span>
       )}
       <div className="mg-bottom-1_2"></div>
-      <button className="pd border-none">SIGN IN</button>
+      <button className="pd border-rg font-lg pointer">SIGN IN</button>
     </form>
   );
 };

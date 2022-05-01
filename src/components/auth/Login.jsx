@@ -2,8 +2,9 @@ import axios from "axios";
 import React, { useState } from "react";
 import { useAuth } from "../../context/AuthContext";
 import { validLogin } from "../../utilities/auth-utils";
-
+import loadingGif from "../../assets/loading.gif";
 const Login = ({ toggleAuth }) => {
+  const [loading, setLoading] = useState(false);
   const { setAuth } = useAuth();
   const [login, setLogin] = useState({
     email: "",
@@ -34,6 +35,7 @@ const Login = ({ toggleAuth }) => {
   };
 
   const postLoginData = async (email, password) => {
+    setLoading(true);
     try {
       const { data, status } = await axios.post("/api/auth/login", {
         email,
@@ -41,8 +43,15 @@ const Login = ({ toggleAuth }) => {
       });
       if (status !== 200) return;
       setAuth({ isLoggedIn: true, encodedToken: data.encodedToken });
+      setLoading(false);
     } catch (err) {
-      console.log(err.response);
+      setLoading(false);
+
+      console.log(err.response.data);
+      setLoginErrors((loginErr) => ({
+        ...loginErr,
+        others: err.response.data.errors[0],
+      }));
     }
   };
   const testLogin = () => {
@@ -50,11 +59,11 @@ const Login = ({ toggleAuth }) => {
   };
 
   return (
-    <form className="flex-cl h30 fixed-w30" onSubmit={handleLoginSubmit}>
+    <form className="flex-cl h30 fixed-w30 " onSubmit={handleLoginSubmit}>
       <div className="border-bottom">
         <button className=" w50 border-rg font-lg pd">LOG IN</button>
         <button
-          className=" w50 font-lg border-reset pd"
+          className=" w50 font-lg border-reset pd pointer"
           onClick={() => toggleAuth(false)}
           type="button"
         >
@@ -91,14 +100,27 @@ const Login = ({ toggleAuth }) => {
           {loginErrors.password}
         </span>
       )}
+      {loginErrors.others && (
+        <span className="err-msg font-sm mg-rl-2">
+          <i className="fa-solid fa-circle-exclamation color-err"></i>
+          {loginErrors.others}
+        </span>
+      )}
 
       <button
-        className=" border-reset  mg-bottom-3 txt-start mg-left-2 txt-underline"
+        className=" border-reset  mg-bottom-3 txt-start mg-left-2 txt-underline pointer"
         onClick={() => testLogin()}
       >
-        Test Credientials
+        Test Login
       </button>
-      <button className="pd border-none">LOG IN</button>
+
+      {loading ? (
+        <button className="pd border-rg font-lg pointer">
+          <img src={loadingGif} />
+        </button>
+      ) : (
+        <button className="pd border-rg font-lg pointer">LOG IN</button>
+      )}
     </form>
   );
 };

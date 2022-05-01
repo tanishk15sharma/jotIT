@@ -139,7 +139,7 @@
   font-size: 1.7rem;
 }
 .font-lg {
-  font-size: 1.3rem;
+  font-size: 1.2rem;
 }
 .font-l {
   font-size: 1rem;
@@ -205,7 +205,7 @@ select:focus {
 }
 .border-rg {
   border: none;
-  // border-bottom: 2px solid $green;
+  border-bottom: 5px solid $action-dark;
 }
 .border-reset {
   border: none;
@@ -224,7 +224,7 @@ select:focus {
   text-decoration: underline;
 }
 .color-err {
-  // color: $error;
+  color: $error;
 }
 .pointer {
   cursor: pointer;

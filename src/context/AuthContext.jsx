@@ -11,6 +11,7 @@ const AuthProvider = ({ children }) => {
           encodedToken: "",
         }
   );
+
   useEffect(() => {
     localStorage.setItem("auth", JSON.stringify(auth));
   }, [auth]);

@@ -96,7 +96,13 @@ const NoteCard = ({ note }) => {
             <button
               className="border-reset card-icon-btn"
               onClick={() =>
-                addToArchives(note._id, note, setNotes, setArchives)
+                addToArchives(
+                  note._id,
+                  note,
+                  setNotes,
+                  setArchives,
+                  auth.encodedToken
+                )
               }
             >
               <span className="material-icons  ">archive</span>

@@ -2,6 +2,7 @@ import React, { useRef, useEffect } from "react";
 import { useArchive } from "../../context/ArchiveContext";
 import { useNotes } from "../../context/NotesContext";
 import { useTrash } from "../../context/TrashContext";
+import { useAuth } from "../../context/AuthContext";
 import { deleteFromArchive, restoreNote } from "../../utilities/archives-utils";
 import { colors } from "../../utilities/helper-utils";
 import { Tooltip } from "../tooltip/Tooltip";
@@ -9,6 +10,7 @@ const ArchiveCard = ({ note }) => {
   const { setArchives } = useArchive();
   const { setNotes } = useNotes();
   const { setTrash } = useTrash();
+  const { auth } = useAuth();
   const bodyRef = useRef(null);
 
   useEffect(() => {
@@ -43,7 +45,14 @@ const ArchiveCard = ({ note }) => {
             <button className="border-reset pointer">
               <span
                 className="material-icons icon"
-                onClick={() => restoreNote(note._id, setNotes, setArchives)}
+                onClick={() =>
+                  restoreNote(
+                    note._id,
+                    setNotes,
+                    setArchives,
+                    auth.encodedToken
+                  )
+                }
               >
                 unarchive
               </span>
@@ -54,7 +63,7 @@ const ArchiveCard = ({ note }) => {
               <span
                 className="material-icons icon"
                 onClick={() => {
-                  deleteFromArchive(note._id, setArchives);
+                  deleteFromArchive(note._id, setArchives, auth.encodedToken);
                   setTrash((trashNotes) => [...trashNotes, note]);
                 }}
               >

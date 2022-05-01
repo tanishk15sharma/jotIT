@@ -1,6 +1,5 @@
 import axios from "axios";
 import toast from "react-hot-toast";
-import { getToken } from "./helper-utils";
 
 const getAllNotes = async (token) => {
   try {

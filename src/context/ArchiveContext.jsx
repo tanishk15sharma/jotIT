@@ -10,7 +10,7 @@ const ArchiveProvider = ({ children }) => {
   useEffect(() => {
     (async () => {
       if (!auth.isLoggedIn) return;
-      const setAllArchives = await getAllArchives();
+      const setAllArchives = await getAllArchives(auth.encodedToken);
       setArchives(setAllArchives);
     })();
   }, [auth.isLoggedIn]);

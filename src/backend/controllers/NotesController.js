@@ -53,7 +53,6 @@ export const createNoteHandler = function (schema, request) {
     this.db.users.update({ _id: user._id }, user);
     return new Response(201, {}, { notes: user.notes });
   } catch (error) {
-    console.log(error);
     return new Response(
       500,
       {},

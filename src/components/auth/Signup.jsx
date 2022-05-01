@@ -40,16 +40,15 @@ const Signup = ({ toggleAuth }) => {
     setLoading(true);
     try {
       const { data, status } = await axios.post("/api/auth/signup", signup);
-      console.log(data);
+
       if (status !== 201) return;
-      setAuth({ isLoggedIn: true, eocodedToken: data.encodedToken });
+      setAuth({ isLoggedIn: true, encodedToken: data.encodedToken });
       setLoading(false);
     } catch (err) {
       console.log(err.response);
     }
   };
 
-  console.log(signupErrors);
   return (
     <form className="flex-cl fixed-w30" onSubmit={handleSignUpSubmit}>
       <div className="border-bottom">

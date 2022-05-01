@@ -1,6 +1,6 @@
 import "./App.scss";
 import { Routes, Route } from "react-router-dom";
-import { Archive, Home, Label, Trash } from "./pages";
+import { Archive, Home, Label, Trash, PageNoteFound } from "./pages";
 import { Nav } from "./components/nav/Nav";
 import { Sidebar } from "./components/sidebar/Sidebar";
 import Auth from "./components/auth/Auth";
@@ -22,6 +22,7 @@ function App() {
           <Route path="/label" element={<Label />} />
           <Route path="/archive" element={<Archive />} />
           <Route path="/trash" element={<Trash />} />
+          <Route path="*" element={<PageNoteFound />} />
         </Routes>
       </div>
     </div>

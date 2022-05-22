@@ -35,6 +35,7 @@ const Login = ({ toggleAuth }) => {
   };
 
   const postLoginData = async (email, password) => {
+    console.log(email, password);
     setLoading(true);
     try {
       const { data, status } = await axios.post("/api/auth/login", {

@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from "react";
+import React from "react";
 import { ArchiveCard } from "../../components/archive/ArchiveCard";
 import { useArchive } from "../../context/ArchiveContext";
 import archiveImgBg from "../../assets/archivebg-img.svg";

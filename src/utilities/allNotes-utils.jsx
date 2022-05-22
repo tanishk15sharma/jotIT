@@ -17,6 +17,7 @@ const getAllNotes = async (token) => {
 };
 
 const addNote = async (note, setNotes, token) => {
+  console.log(note, token);
   const toastId = toast.loading("Adding...");
   try {
     const { data, status } = await axios.post(
@@ -74,9 +75,11 @@ const deleteNote = async (id, setNotes, token) => {
         authorization: token,
       },
     });
-    if (status !== 200) return;
-    toast.success("Note Trashed!");
-    setNotes(data.notes);
+
+    if (status === 200) {
+      toast.success("Note Trashed!");
+      setNotes(data.notes);
+    }
   } catch (err) {
     console.log(err);
     toast.error("try again");

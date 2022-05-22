@@ -42,6 +42,7 @@ const Signup = ({ toggleAuth }) => {
       const { data, status } = await axios.post("/api/auth/signup", signup);
 
       if (status !== 201) return;
+      console.log(data, status);
       setAuth({ isLoggedIn: true, encodedToken: data.encodedToken });
       setLoading(false);
     } catch (err) {

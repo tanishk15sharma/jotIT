@@ -6,9 +6,11 @@ import { deleteTrashNote } from "../../utilities/trash-utils";
 import { colors } from "../../utilities/helper-utils";
 import { Tooltip } from "../tooltip/Tooltip";
 import toast from "react-hot-toast";
+import { useAuth } from "../../context/AuthContext";
 const TrashCard = ({ note }) => {
   const { setNotes } = useNotes();
   const { setTrash } = useTrash();
+  const { auth } = useAuth();
 
   const bodyRef = useRef(null);
 
@@ -44,7 +46,7 @@ const TrashCard = ({ note }) => {
                 className="material-icons icon"
                 onClick={() => {
                   toast.loading("Restoring!");
-                  addNote(note, setNotes);
+                  addNote(note, setNotes, auth.encodedToken);
                   deleteTrashNote(note._id, setTrash);
                 }}
               >
